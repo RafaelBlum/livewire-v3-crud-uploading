@@ -9,21 +9,20 @@
     {{-- WIRE NAME --}}
     <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
-        <input wire:model="form.name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Informe nome"/>
         <div class="text-red-500">
-            @error('form.name') <span class="error">{{ $message }}</span> @enderror
+            @error('name') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
-
 
     {{-- WIRE EMAIL --}}
     <label class="mt-4 block text-sm">
         <span class="text-gray-700 dark:text-gray-400">E-mail</span>
-        <input wire:model="form.email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Email"/>
         <div class="text-red-500">
-            @error('form.email') <span class="error">{{ $message }}</span> @enderror
+            @error('email') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 
@@ -31,49 +30,51 @@
     <label for="prd-img" class="mt-4 block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Image</span>
         <input class="lock w-full mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-               wire:model="form.image"
+               wire:model="image"
                type="file"
                id="prd-img">
         <div class="text-red-500">
-            @error('form.image') <span class="error">{{ $message }}</span> @enderror
+            @error('image') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 
-    {{-- DISCIPLINA --}}
-    <label class="block mt-4 text-sm">
+    <div class="grid grid-cols-2 gap-4">
+        {{-- DISCIPLINA --}}
+        <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">
           Disciplina
         </span>
-        <select wire:model="form.class_id" id="class_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-            <option value="">Selecione a disciplina</option>
-            @foreach ($classes as $class)
-                <option value="{{ $class->id }}">
-                    {{ $class->name }}
-                </option>
-            @endforeach
-        </select>
-        <div class="text-red-500">
-            @error('form.class_id') <span class="error">{{ $message }}</span> @enderror
-        </div>
-    </label>
+            <select wire:model.live="class_id" id="class_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                <option value="">Selecione a disciplina</option>
+                @foreach ($classes as $class)
+                    <option value="{{ $class->id }}">
+                        {{ $class->name }}
+                    </option>
+                @endforeach
+            </select>
+            <div class="text-red-500">
+                @error('class_id') <span class="error">{{ $message }}</span> @enderror
+            </div>
+        </label>
 
-    {{-- TURMA --}}
-    <label class="block mt-4 text-sm">
+        {{-- TURMA --}}
+        <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">
           Turma
         </span>
-        <select wire:model="form.section_id" id="section_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-            <option value="">Selecione a turma</option>
-            @foreach ($sections as $section)
-                <option value="{{ $section->id }}">
-                    {{ $section->name }} - {{ $section->class->name }}
-                </option>
-            @endforeach
-        </select>
-        <div class="text-red-500">
-            @error('form.section_id') <span class="error">{{ $message }}</span> @enderror
-        </div>
-    </label>
+            <select wire:model="section_id" id="section_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                <option value="">Selecione a turma</option>
+                @foreach ($sections as $section)
+                    <option value="{{ $section->id }}">
+                        {{ $section->name }} - {{ $section->class->name }}
+                    </option>
+                @endforeach
+            </select>
+            <div class="text-red-500">
+                @error('section_id') <span class="error">{{ $message }}</span> @enderror
+            </div>
+        </label>
+    </div>
 
     <div class="flex justify-between mt-4 text-sm">
         <a href="{{ route('students.index') }}" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">

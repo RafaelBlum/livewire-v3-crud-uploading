@@ -12,8 +12,8 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Name</span>
             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                   wire:model="product"
-                   name="name"
+                   wire:model.defer="product"
+                   name="product"
                    placeholder="Nome produto"/>
             <div class="text-red-500">
                 @error('product') <span class="error">{{ $message }}</span> @enderror
@@ -24,7 +24,7 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Valor</span>
             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                   wire:model="price"
+                   wire:model.defer="price"
                    name="price"
                    placeholder="Nome produto"/>
             <div class="text-red-500">
@@ -35,15 +35,40 @@
         {{-- IMAGE --}}
         <label for="prd-img" class="mt-4 block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Image produto</span>
-            <input class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                   wire:model="image"
-                   type="file"
-                   id="prd-img"
-                   name="image">
-            <div class="text-red-500">
+
+
+            <div
+                    x-data="{ uploading: false, progress: 0, styles: { color: 'red', display: 'flex' } }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+            >
+                <!-- File Input -->
+                <input class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
+                       wire:model.defer="image" type="file" id="prd-img" name="image">
+
+                <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
+                    <progress class="h-4 bg-red-600" max="100" x-bind:value="progress" style="width: 100%"></progress>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="text-red-500 mt-2">
                 @error('image') <span class="error">{{ $message }}</span> @enderror
             </div>
         </label>
+
+
+
+        @if($image)
+            <div class="flex justify-between mt-4 text-sm">
+                <img class="object-cover rounded-full" src="{{$image->temporaryUrl()}}" alt="" width="120"/>
+            </div>
+        @endif
 
         {{-- SUBMIT --}}
         <div class="flex justify-between mt-4 text-sm">

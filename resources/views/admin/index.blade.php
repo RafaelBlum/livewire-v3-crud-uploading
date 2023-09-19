@@ -35,10 +35,10 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Total clients
+            Total users
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            6389
+            {{$users}}
           </p>
         </div>
       </div>
@@ -55,10 +55,10 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Account balance
+            Total produtos
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            $ 46,760.89
+            {{$products}}
           </p>
         </div>
       </div>
@@ -74,10 +74,10 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            New sales
+            Total estudantes
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-            376
+            {{$students}}
           </p>
         </div>
       </div>
@@ -160,12 +160,8 @@
                   <div
                     class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
                   >
-                    <img
-                      class="object-cover w-full h-full rounded-full"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
-                      alt=""
-                      loading="lazy"
-                    />
+                    <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
+                      alt="" loading="lazy"/>
                     <div
                       class="absolute inset-0 rounded-full shadow-inner"
                       aria-hidden="true"

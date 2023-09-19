@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin/index');
+        return view('admin/index', [
+            'users' => User::all()->count(),
+            'products' => Product::all()->count(),
+            'students' => Student::all()->count()
+        ]);
     }
 
     public function forms()

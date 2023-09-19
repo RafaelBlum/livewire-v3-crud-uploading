@@ -9,11 +9,11 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        return view('admin.forms');
+        return view('admin.product.products');
     }
 
     public function create()
     {
-        return view('admin.product');
+        return view('admin.product.product');
     }
 }

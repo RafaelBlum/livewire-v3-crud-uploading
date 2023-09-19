@@ -106,6 +106,9 @@ com `componentes reativo` "sem" o uso de javascript (Existe o javascript, mas n�
 - `php artisan livewire:make todo ` [Criando componente todo] 
 - `php artisan make:model Todo -m ` [Criado a tabela modelo para add propriedades] 
 
+
+## Pacotes auxiliares
+- `composer require "spatie/laravel-medialibrary` [oferece componentes Blade, Vue e React para lidar com uploads para a biblioteca de mídia e administrar o conteúdo de uma coleção da biblioteca de mídia.] 
     
 ## Desenvolvimento (Frontend layout e lógica)
 
@@ -147,6 +150,66 @@ com `componentes reativo` "sem" o uso de javascript (Existe o javascript, mas n�
 - `composer require spatie/ray --dev` []
 - `` []
 - `` []
+
+## Exemplo `Atividades de aluno`
+
+- Introduction
+- install and setup Laravel/Livewire and Breeze
+- Setup Models/Migrations/Factories/Seeders
+- Work On Index/Create page UI
+- Display Students Data and Implement Pagination
+- Implement Hot Reloads for Livewire Components
+- Work On the Create Form
+- Implement Validations
+- Implement Image Upload
+
+- Implement Dependent Dropdown [Documentação](https://livewire.laravel.com/docs/lifecycle-hooks#update)
+    - updating é renderizado com todas propriedade que após forem atualizadas/selecionada, mas Updated atualização da `propriedade especifica`, no caso a `class_id`
+~~~~~~method updated
+
+    #[Rule('required', message: 'Precisa selecionar uma disciplina.')]
+    public $class_id;
+
+    public $sections = [];
+
+    public function updatedClassId($value)
+    {
+        $this->sections = Section::where('class_id', $value)->get();
+    }
+~~~~~~
+
+- Na view
+~~~~~~foreach sections
+    <select wire:model="section_id" id="section_id"">
+        <option value="">Selecione a turma</option>
+        @foreach ($sections as $section)
+            <option value="{{ $section->id }}">
+                {{ $section->name }} - {{ $section->class->name }}
+            </option>
+        @endforeach
+    </select>
+
+~~~~~~
+
+-  `Na IMAGE` Para tornar esses arquivos acessíveis na web: Para criar o link simbólico, você pode usar o storage:linkcomando Artisan
+~~~~~~
+    php artisan storage:link
+
+    <img class="object-cover w-full h-full rounded-full" src="{{$student?->getMedia()?->last()?->getUrl()}}" alt="" width="60px" loading="lazy"/>
+~~~~~~
+
+
+
+- Work on Edit Form
+[Link tutorial](https://www.youtube.com/watch?v=9hDL-LVF3OY&t=3317s&ab_channel=TapanSharma)
+- Extract Create Form to a Form Object
+- Extract Edit Form to Form Object
+- Display Flash Messages
+- Delete Individual Records
+- Add Confirm Dialog and Register Custom Directive
+- Implement wire:navigate
+
+
 
 
 ## Contatos
