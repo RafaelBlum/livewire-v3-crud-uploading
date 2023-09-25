@@ -6,8 +6,10 @@ use App\Livewire\Forms\StudentForm;
 use App\Models\Classes;
 use App\Models\Section;
 use App\Models\Student;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 
@@ -21,7 +23,12 @@ class Create extends Component
     #[Rule('required|email', message: 'E-mail é obrigatório.')]
     public string $email;
 
-    #[Rule('required|image', message: 'Sua image é obrigatória.')]
+//    #[Rule('required|image', message: 'Sua image é obrigatória.')]
+//    public $image;
+
+    /**@var TemporaryUploadedFile|mixed $image
+     */
+    #[Rule('required|max:1024', message: 'Image obrigatória ou o tamanho é maior que 1024MB.')]
     public $image;
 
     #[Rule('required', message: 'Precisa selecionar uma disciplina.')]
@@ -46,11 +53,19 @@ class Create extends Component
         $this->validate();
 
         $student = Student::create(
-            $this->only(['name', 'email', 'class_id', 'section_id'])
-        );
+//            $this->only(['name', 'email', 'class_id', 'section_id'])
+        [
+            'name'=> $this->name,
+            'email'=> $this->email,
+            'image'=> Str::replaceFirst('public/', '', $this->image->store('public/students')),
+            'class_id'=> $this->class_id,
+            'section_id'=> $this->section_id
+        ]);
 
-        $student->addMedia($this->image)
-            ->toMediaCollection();
+
+//        $student->addMedia($this->image)
+//            ->toMediaCollection();
+//        $student->image = Str::replaceFirst('public/', '', $this->image->store('public/students'));
 
 //        session()->flash('status', 'Post successfully updated.');
 

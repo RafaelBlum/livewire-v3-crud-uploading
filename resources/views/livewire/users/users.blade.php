@@ -1,49 +1,44 @@
 <div>
     {{-- Table list with actions crud --}}
-    <h4 class="mb-4 mt-3 text-lg font-semibold text-gray-600 dark:text-gray-300">
-        Produtos
+    <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+        Usuários
     </h4>
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Produto</th>
-                    <th class="px-4 py-3">Valor</th>
+                    <th class="px-4 py-3">Nome</th>
+                    <th class="px-4 py-3">E-mail</th>
                     <th class="px-4 py-3">Data</th>
                     <th class="px-4 py-3">Ações</th>
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                @foreach($products as $product)
+                @foreach($users as $user)
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
                                 <!-- Avatar with inset shadow -->
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    @if(\Illuminate\Support\Facades\Storage::disk('public')->exists($product->image))
-                                        <img class="object-cover w-full h-full rounded-full" src="/storage/{{$product->image}}" alt=""
-                                             width="60px" loading="lazy"/>
-                                    @else
-                                        <img class="object-cover w-full h-full rounded-full" src="/storage/default.jpg" alt="" loading="lazy"/>
-                                    @endif
+                                    <img class="object-cover w-full h-full rounded-full" src="/storage/default.jpg" alt="" loading="lazy"/>
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
                                     <p class="font-semibold">
-                                        {{$product->product}}
+                                        {{$user->name}}
                                     </p>
                                     <p class="text-xs text-gray-600 dark:text-gray-400">
-                                        {{$product->price}}
+                                        {{$user->email}}
                                     </p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{$product->price}}
+                            {{$user->email}}
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{date('d-m-Y', strtotime($product->created_at))}}
+                            {{date('d-m-Y', strtotime($user->created_at))}}
                         </td>
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
@@ -83,7 +78,7 @@
                         </button>
                       </li>
                       <li>
-                          {{$products->links()}}
+                          {{$users->links()}}
 
                       </li>
                       <li>
@@ -99,3 +94,4 @@
         </div>
     </div>
 </div>
+

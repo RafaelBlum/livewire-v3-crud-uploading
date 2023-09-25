@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Computed;
 
 class Create extends Component
 {
@@ -33,6 +34,7 @@ class Create extends Component
 
     public function save()
     {
+        sleep(3);
         $this->validate();
         Product::query()->create([
             'product'   => $this->product,

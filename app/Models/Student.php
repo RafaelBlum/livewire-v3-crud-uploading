@@ -18,7 +18,8 @@ class Student extends Model implements HasMedia
         'section_id',
         'class_id',
         'name',
-        'email'
+        'email',
+        'image'
     ];
 
     public function section()

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [AdminController::class, 'dashboard'])->name('admin.index');
+Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
 Route::get('/forms', [AdminController::class, 'forms'])->name('admin.forms');
 Route::get('/buttons', [AdminController::class, 'buttons'])->name('admin.buttons');
 Route::get('/cards', [AdminController::class, 'cards'])->name('admin.cards');
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('gallerys', GalleryController::class);
     Route::resource('students', StudentController::class);
+//    Route::get('students/{student}/edit', \App\Livewire\Student\Edit::class)->name('students.edit');
 });
 
 require __DIR__.'/auth.php';

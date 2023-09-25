@@ -19,6 +19,7 @@ class StudentFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
+            'image' => 'storage/default.jpg',
         ];
     }
 }

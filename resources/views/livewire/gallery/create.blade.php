@@ -2,11 +2,19 @@
     <form wire:submit.prevent="save" enctype="multipart/form-data">
         @csrf
 
+        {{-- MESSAGE STATUS --}}
         @if (session('status'))
             <div class="min-w-0 p-3 mb-2 text-white text-sm bg-green-600 rounded-lg shadow-xs">
                 {{ session('status') }}
             </div>
         @endif
+
+        {{-- MESSAGE LOADING --}}
+        <div class="w-full min-w-0 p-3 mb-2 text-white text-sm bg-purple-600 rounded-lg shadow-xs"
+                wire:loading
+                wire:target="save">
+            Analisando o cadastro do produto novo {{$product}}...
+        </div>
 
         {{-- NAME --}}
         <label class="block text-sm">
@@ -37,25 +45,21 @@
             <span class="text-gray-700 dark:text-gray-400">Image produto</span>
 
 
-            <div
-                    x-data="{ uploading: false, progress: 0, styles: { color: 'red', display: 'flex' } }"
+            <div x-data="{ uploading: false, progress: 0}"
                     x-on:livewire-upload-start="uploading = true"
                     x-on:livewire-upload-finish="uploading = false"
                     x-on:livewire-upload-error="uploading = false"
-                    x-on:livewire-upload-progress="progress = $event.detail.progress"
-            >
-                <!-- File Input -->
+                    x-on:livewire-upload-progress="progress = $event.detail.progress">
+
+                {{-- INPUT IMAGE --}}
                 <input class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                       wire:model.defer="image" type="file" id="prd-img" name="image">
+                       wire:model.defer="image" type="file" id="image" name="image">
 
                 <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
                     <progress class="h-4 bg-red-600" max="100" x-bind:value="progress" style="width: 100%"></progress>
                 </div>
 
             </div>
-
-
-
 
             <div class="text-red-500 mt-2">
                 @error('image') <span class="error">{{ $message }}</span> @enderror

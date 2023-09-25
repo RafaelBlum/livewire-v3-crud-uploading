@@ -2,15 +2,6 @@
 
 # [Gallery livewire products](#) 
 
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/soft-ui-dashboard-tailwind&text=Check%20Soft%20UI%20Dashboard%20Tailwind%20made%20by%20@CreativeTim%20#webdesign%20#dashboard%20#softdesign%20#html%20https://www.creative-tim.com/product/soft-ui-dashboard-tailwind) 
-[![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/FhCJCaHdQa)
-
-![version](https://img.shields.io/badge/version-1.0.5-blue.svg) 
-[![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/soft-ui-dashboard-tailwind.svg)](https://github.com/creativetimofficial/soft-ui-dashboard-tailwind/issues?q=is%3Aopen+is%3Aissue) 
-[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/soft-ui-dashboard-tailwind.svg)](https://github.com/creativetimofficial/soft-ui-dashboard-tailwind/issues?q=is%3Aissue+is%3Aclosed)
-
-
-
 <p align="center">
 	<a href="#"  target="_blank" title="calculadora com livewire">
 		<img src="public/images/gif-todo-3.gif" alt="Todo list with livewire" width="100%">
@@ -20,7 +11,7 @@
 <p align="center">
 	<img src="https://img.shields.io/badge/version project-2.0-brightgreen" alt="version project todo">
     <img src="https://img.shields.io/badge/Php-8.2-informational&color=brightgreen" alt="stack project">
-    <img src="https://img.shields.io/static/v1?label=Laravel&message=9.52.5&color=brightgreen?style=for-the-badge" alt="stack project">
+    <img src="https://img.shields.io/static/v1?label=Laravel&message=10.10&color=brightgreen?style=for-the-badge" alt="stack project">
     <img src="https://img.shields.io/static/v1?label=Livewire&message=3.0.1&color=brightgreen?style=for-the-badge" alt="stack project">
 	<a href="https://opensource.org/licenses/GPL-3.0">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GPLv3 License">
@@ -33,73 +24,46 @@
 </p>
 
 
-🧪 [See it live](https://windmillui.com/dashboard-html)
+# 🚀 [Projeto Uploading image livewire](#)
 
-- 🦮 Thoroughly accessible
-- 🌗 Light and dark themes
-- 💅 Styled with Tailwind CSS
-- 🧩 Various components
-- ❄ [React version](https://windmillui.com/dashboard-react)
-
-## 🚀 Usage
-
-### What's included
+### Objetivo d projeto
 
 Within the download you'll find the following directories and files:
 
 ```
-soft-ui-dashboard-tailwind
-├── build
-│   ├── assets
-│   │   ├── css
-│   │   │   ├── soft-ui-dashboard-tailwind.css
-│   │   │   ├── soft-ui-dashboard-tailwind.min.css
-│   │   ├── fonts
-│   │   ├── img
-│   │   └── js
-│   │       ├── plugins
-│   │       ├── soft-ui-dashboard-tailwind.js
-│   │       └── soft-ui-dashboard-tailwind.min.js
-│   ├── docs
-│   │   └── documentation.html
-│   ├── index.html
-│   └── pages
-├── package.json
-├── src
-│   └── styles.css
-└── tailwind.config.js
-
+Component structure
+├── app Component controller
+│   ├── Livewire
+│   │   ├── gallery
+│   │   │   ├── Create
+│   │   │   ├── Index
+│   │   ├── student
+│   │   │   ├── Create
+│   │   │   ├── Index
+│   │   ├── adm
+│   │   │   ├── PainelButton
+├── resources - views
+│   ├── Livewire
+│   │   ├── gallery
+│   │   │   ├── create
+│   │   │   ├── index
+│   │   ├── student
+│   │   │   ├── create
+│   │   │   ├── index
+│   │   ├── adm
+│   │   │   ├── painelButton
 ```
 
+###  Tecnologias (serviços externos, libs, frameworks, hospedagem etc.) e instalações.
 
-## Projeto Todo task v.2.0
-Este é uma `aplicação Laravel` utilizando a "extensão" `Livewire`. Uma extensão reativa, que agiliza o desenvolvimento
-com `componentes reativo` "sem" o uso de javascript (Existe o javascript, mas não precisamos se preocupar com  desenvolvimento).
-
-
-
-##### Descrição de funcionalidades do `app x`
-- descriptions...
-
-> Com **livewire** temos componentes responsivos e juntamente com o blade, temos uma ferramenta poderosa. Componentes que podemos atualizar sem
->precisar atualizar toda página de forma fácil e rápida.
-
-<p align="center">
-	<a href="#"  target="_blank" title="Diagrama">
-		<img src="public/images/diagram-2.jpg" alt="Diagramação de componentes livewire" style="border-radius: 5px;" width="600">
-	</a>
-</p>
-
-######  Tecnologias (serviços externos, libs, frameworks, hospedagem etc.) e instalações.
-
-- <a href="#" target="_blank">Php `8.2`</a>
-- <a href="#" target="_blank">Laravel `9.52.5`</a> [Projeto laravel] composer create-project laravel/laravel name-project
-- <a href="#" target="_blank">Livewire `2.12`</a> [Livewire] composer require livewire/livewire
-- <a href="#" target="_blank">laravel debugbar `3.8`</a> [Debugbar] composer require barryvdh/laravel-debugbar --dev
-- <a href="#" target="_blank">Remixicon `2.5.0`</a> [Docs](https://remixicon.com/)
-- <a href="#" target="_blank">Tailwindcss `3.3.3`</a> [Tailwindcss] npm install -D tailwindcss postcss autoprefixer
-    - Configuração do framework esta neste link [Install Tailwind CSS with Laravel](https://tailwindcss.com/docs/guides/laravel)
-- <a href="#" target="_blank">Alpine jS `2.8.2`</a> [Docs](https://github.com/alpinejs/alpine/tree/v2.8.2)
+- 🧩 <a href="#" target="_blank">Php `8.2`</a>
+- 🧩 <a href="#" target="_blank">Laravel `9.52.5`</a> [Projeto laravel] composer create-project laravel/laravel name-project
+- 🧩 <a href="#" target="_blank">Livewire `2.12`</a> [Livewire] composer require livewire/livewire
+- 🧩 <a href="#" target="_blank">laravel debugbar `3.8`</a> [Debugbar] composer require barryvdh/laravel-debugbar --dev
+- 🧩 <a href="#" target="_blank">Remixicon `2.5.0`</a> [Docs](https://remixicon.com/)
+- 🧩 <a href="#" target="_blank">Tailwindcss `3.3.3`</a> [Tailwindcss] npm install -D tailwindcss postcss autoprefixer
+    - ❄ Configuração do framework esta neste link [Install Tailwind CSS with Laravel](https://tailwindcss.com/docs/guides/laravel)
+- 🧩 <a href="#" target="_blank">Alpine jS `2.8.2`</a> [Docs](https://github.com/alpinejs/alpine/tree/v2.8.2)
 
 ## Desenvolvimento (backend lógica e comandos)
 - `php artisan serve --port=8000` [inicializando servidor] 
@@ -191,11 +155,56 @@ com `componentes reativo` "sem" o uso de javascript (Existe o javascript, mas n�
 
 ~~~~~~
 
--  `Na IMAGE` Para tornar esses arquivos acessíveis na web: Para criar o link simbólico, você pode usar o storage:linkcomando Artisan
+-  `STORAGE::` Exemplos com a classe Storage
 ~~~~~~
-    php artisan storage:link
+if(storage_path('app/public/'.$this->student->image)){
+                 1.create a new folder
+                Storage::makeDirectory('testeImage');
 
-    <img class="object-cover w-full h-full rounded-full" src="{{$student?->getMedia()?->last()?->getUrl()}}" alt="" width="60px" loading="lazy"/>
+                 2.store file in directory
+                Storage::putFile('testeImage', $this->image);
+
+                 3.file generated name hash name
+                $generatedName = $this->image->hashName();
+                dd($generatedName);
+
+                 4.store file in directory and rename
+                Storage::putFileAs('testeImage', $this->image, "student-".$this->student->id.".".$this->image->extension());
+
+                 5.copy file to another directory
+                Storage::copy('testeImage/student-1.jpg', 'public/imageCopy.png');
+
+
+                 6.cut file to another directory
+                Storage::move('public/imageCopy.png', 'public/testeImage/cutImage.png');
+
+                 7.list files or sub files inside folder
+                $array[] = Storage::files('public/students');
+                $array[] = Storage::allFiles('public');
+                dd($array);
+
+                 8.show files
+                $file = Storage::get('public/default.jpg');
+                //get file diretory and create to another diretory
+                dd(Storage::put('students/student-1.jpg', $file));
+
+                 9.download file
+                return Storage::download('public/default.jpg');
+
+                 10.delete file(s)
+                if(Storage::exists('students/student-1.jpg')){
+                    dd(Storage::delete('students/student-1.jpg'));
+                }
+
+                if(Storage::directoryExists('students')){
+                    dd("DIRETÓRIO EXCLUIDO!", Storage::deleteDirectory('students'));
+                }
+
+                dd('sem arquivo e diretório');
+
+                dd(Storage::disk('public'));
+
+            }
 ~~~~~~
 
 

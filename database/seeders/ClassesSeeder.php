@@ -19,12 +19,19 @@ class ClassesSeeder extends Seeder
     public function run(): void
     {
         /**
-         * Inciado uma fabrica e criação de 5 classes
-         *
+         * Inciado uma fabrica
+         * criamos laço de repetição em sequencia (5 classes, 10 sections, 20 students)
+         * laço:
+         * cria 0 disciplina
+         *      - cria 0 sections
+         *          - cria 2 students
+         *      - cria 1 sections
+         *          - cria 2 students
         */
         Classes::factory()
             ->count(5)
-            ->sequence(fn ($sequence) => ['name' => 'Discipline '. $sequence->index + 1])
+            ->sequence(fn ($sequence) => [
+                'name' => 'Discipline '. $sequence->index + 1])
             ->has(
                 Section::factory()->count(2)->state(
                     new Sequence(

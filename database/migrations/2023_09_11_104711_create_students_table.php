@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('section_id')->constrained();
             $table->string('name');
             $table->string('email');
+            $table->string('image');
             $table->timestamps();
         });
     }

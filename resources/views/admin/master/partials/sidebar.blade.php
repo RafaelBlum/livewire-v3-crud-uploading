@@ -1,13 +1,13 @@
 {{-- DESKTOP SIDEBAR --}}
 <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
     <div class="py-4 text-gray-500 dark:text-gray-400">
-        {{--  --}}
+        {{-- LOGO --}}
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
                 href="{{route('admin.index')}}">
             Galeria
         </a>
 
-        {{--  --}}
+        {{-- INDEX | DASHBOARD --}}
         <ul class="mt-6">
             <li class="relative px-6 py-3">
                   <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
@@ -21,53 +21,10 @@
                 </a>
             </li>
         </ul>
+
+        {{-- PAGES MENU LIST --}}
         <ul>
-
-            {{--  --}}
-            <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                   href="{{route('gallerys.create')}}">
-                    <svg
-                            class="w-5 h-5"
-                            aria-hidden="true"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                    >
-                        <path
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                        ></path>
-                    </svg>
-                    <span class="ml-4">Criar produto</span>
-                </a>
-            </li>
-
-            {{--  --}}
-            <li class="relative px-6 py-3">
-                <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                   href="{{route('students.create')}}">
-                    <svg
-                            class="w-5 h-5"
-                            aria-hidden="true"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                    >
-                        <path
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                        ></path>
-                    </svg>
-                    <span class="ml-4">Criar estudante</span>
-                </a>
-            </li>
-            
-            {{--  --}}
+            {{-- PAGE FORM --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.forms')}}">
@@ -89,7 +46,7 @@
                 </a>
             </li>
             
-            {{--  --}}
+            {{-- PAGE CARDS --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.cards')}}">
@@ -111,7 +68,7 @@
                 </a>
             </li>
 
-            {{--  --}}
+            {{-- PAGE CHARTS --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.charts')}}">
@@ -134,7 +91,7 @@
                 </a>
             </li>
 
-            {{--  --}}
+            {{-- PAGE BUTTONS --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.buttons')}}">
@@ -156,7 +113,7 @@
                 </a>
             </li>
 
-            {{--  --}}
+            {{-- PAGE MODALS --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.modals')}}">
@@ -178,7 +135,7 @@
                 </a>
             </li>
 
-            {{--  --}}
+            {{-- PAGE TABLES --}}
             <li class="relative px-6 py-3">
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         href="{{route('admin.tables')}}">
@@ -198,148 +155,128 @@
                 </a>
             </li>
 
-            {{-- SUB LINKS --}}
-            <li class="relative px-6 py-3">
-                <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                        @click="togglePagesMenu"
-                        aria-haspopup="true">
-                    <span class="inline-flex items-center">
-                      <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                      >
-                        <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                        ></path>
-                      </svg>
-                      <span class="ml-4">Pages</span>
-                    </span>
-                    <svg
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                    >
-                        <path
-                                fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                        ></path>
+            {{-- MENU PRODUCTS  --}}
+            <li x-data="{ open: false }" class="relative px-6 py-3">
+                <button @click="open = !open" class="inline-flex items-center w-full text-sm justify-between font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                    <span class="flex items-center">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                            <span class="ml-4">Produtos</span>
+                        </span>
+
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
 
-                {{-- SUBMENU --}}
-                <template x-if="isPagesMenuOpen">
-                    <ul 
-                            x-transition:enter="transition-all ease-in-out duration-300"
-                            x-transition:enter-start="opacity-25 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-xl"
-                            x-transition:leave="transition-all ease-in-out duration-300"
-                            x-transition:leave-start="opacity-100 max-h-xl"
-                            x-transition:leave-end="opacity-0 max-h-0"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
+                <ul x-show="open" @click.away="open = false"
+                    x-transition:enter="transition-all ease-in-out duration-300"
+                    x-transition:enter-start="opacity-25 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-xl"
+                    x-transition:leave="transition-all ease-in-out duration-300"
+                    x-transition:leave-start="opacity-100 max-h-xl"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
+                    aria-label="submenu">
 
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.login')}}">Login</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.createAccount')}}">Create account</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.forget')}}">Forgot password</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.errors')}}">404</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.blank')}}">Blank</a>
-                        </li>
-                    </ul>
-                </template>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('gallerys.index')}}">Listar produtos</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('gallerys.create')}}">Criar produto</a>
+                    </li>
+                </ul>
             </li>
 
-            {{-- LIVEWIRE MENU --}}
-            <li class="relative px-6 py-3">
-                <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                        @click="togglePagesMenu"
-                        aria-haspopup="true">
-                    <span class="inline-flex items-center">
-                      <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                      >
-                        <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                        ></path>
-                      </svg>
-                      <span class="ml-4">Livewire</span>
-                    </span>
-                    <svg
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                    >
-                        <path
-                                fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                        ></path>
+            {{-- MENU STUDENTS --}}
+            <li x-data="{ open: false }" class="relative px-6 py-3">
+                <button @click="open = !open" class="inline-flex items-center w-full text-sm justify-between font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                    <span class="flex items-center">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                            <span class="ml-4">Estudantes</span>
+                        </span>
+
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
 
-                {{-- SUBMENU --}}
-                <template x-if="isPagesLivewireMenuOpen">
-                    <ul
-                            x-transition:enter="transition-all ease-in-out duration-300"
-                            x-transition:enter-start="opacity-25 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-xl"
-                            x-transition:leave="transition-all ease-in-out duration-300"
-                            x-transition:leave-start="opacity-100 max-h-xl"
-                            x-transition:leave-end="opacity-0 max-h-0"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
+                <ul x-show="open" @click.away="open = false"
+                    x-transition:enter="transition-all ease-in-out duration-300"
+                    x-transition:enter-start="opacity-25 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-xl"
+                    x-transition:leave="transition-all ease-in-out duration-300"
+                    x-transition:leave-start="opacity-100 max-h-xl"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
+                    aria-label="submenu">
 
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.login')}}">Uploads component</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.createAccount')}}">Create account</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.forget')}}">Forgot password</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.errors')}}">404</a>
-                        </li>
-                        {{--  --}}
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" href="{{route('admin.pages.blank')}}">Blank</a>
-                        </li>
-                    </ul>
-                </template>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('students.index')}}">Lista de estudantes</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('students.create')}}">Criar estudante</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.users')}}">Usuários</a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- MENU AUTH --}}
+            <li x-data="{ open: false }" class="relative px-6 py-3">
+                <button @click="open = !open" class="inline-flex items-center w-full text-sm justify-between font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                    <span class="flex items-center">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                            <span class="ml-4">Auth</span>
+                        </span>
+
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <ul x-show="open" @click.away="open = false"
+                    x-transition:enter="transition-all ease-in-out duration-300"
+                    x-transition:enter-start="opacity-25 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-xl"
+                    x-transition:leave="transition-all ease-in-out duration-300"
+                    x-transition:leave-start="opacity-100 max-h-xl"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
+                    aria-label="submenu">
+
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.pages.login')}}">Login</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.pages.createAccount')}}">Create account</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.pages.forget')}}">Forgot password</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.pages.errors')}}">404</a>
+                    </li>
+                    {{--  --}}
+                    <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a class="w-full" href="{{route('admin.pages.blank')}}">Blank</a>
+                    </li>
+                </ul>
             </li>
         </ul>
 
@@ -555,38 +492,17 @@
 
             {{-- SUBMENU LINKS --}}
             <li class="relative px-6 py-3">
-                <button
-                        class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         @click="togglePagesMenu"
                         aria-haspopup="true">
                     <span class="inline-flex items-center">
-                      <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                      >
-                        <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                        ></path>
+                      <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
                       </svg>
                       <span class="ml-4">Pages</span>
                     </span>
-                    <svg
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                    >
-                        <path
-                                fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                        ></path>
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
                 
