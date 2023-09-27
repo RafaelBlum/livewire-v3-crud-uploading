@@ -9,20 +9,20 @@
     {{-- WIRE NAME --}}
     <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
-        <input wire:model="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model="form.name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Informe nome"/>
         <div class="text-red-500">
-            @error('name') <span class="error">{{ $message }}</span> @enderror
+            @error('form.name') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 
     {{-- WIRE EMAIL --}}
     <label class="mt-4 block text-sm">
         <span class="text-gray-700 dark:text-gray-400">E-mail</span>
-        <input wire:model="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model="form.email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Email"/>
         <div class="text-red-500">
-            @error('email') <span class="error">{{ $message }}</span> @enderror
+            @error('form.email') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 
@@ -36,12 +36,12 @@
                 </div>
             @endif
             <input class="lock w-full mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                   wire:model="image"
+                   wire:model="form.image"
                    type="file"
                    id="prd-img">
         </div>
         <div class="text-red-500">
-            @error('image') <span class="error">{{ $message }}</span> @enderror
+            @error('form.image') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 
@@ -69,7 +69,7 @@
         <span class="text-gray-700 dark:text-gray-400">
           Turma
         </span>
-            <select wire:model="section_id" id="section_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+            <select wire:model="form.section_id" id="section_id" class="block w-full mt-1 text-sm dark:text-gray-300 text-gray-800 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                 <option value="">Selecione a turma</option>
                 @foreach ($sections as $section)
                     <option value="{{ $section->id }}">
@@ -78,15 +78,15 @@
                 @endforeach
             </select>
             <div class="text-red-500">
-                @error('section_id') <span class="error">{{ $message }}</span> @enderror
+                @error('form.section_id') <span class="error">{{ $message }}</span> @enderror
             </div>
         </label>
 
-        @if($image)
-            <div class="flex justify-between mt-4 text-sm">
-                <img class="object-cover rounded-full" src="{{$image}}" alt="" width="120"/>
-            </div>
-        @endif
+{{--        @if($image)--}}
+{{--            <div class="flex justify-between mt-4 text-sm">--}}
+{{--                <img class="object-cover rounded-full" src="{{$image}}" alt="" width="120"/>--}}
+{{--            </div>--}}
+{{--        @endif--}}
     </div>
 
     <div class="flex justify-between mt-4 text-sm">

@@ -8,7 +8,7 @@ use Livewire\Attributes\Rule;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Form;
 
-class StudentForm extends Form
+class CreateFormStudent extends Form
 {
     #[Rule('required|min:3', message: 'Nome é obrigatório.')]
     public string $name;
@@ -26,11 +26,8 @@ class StudentForm extends Form
 
     public function store($class_id)
     {
-        $this->validate();
 
         $student = Student::create(
-//            $this->only(['name', 'email', 'class_id', 'section_id']) OR
-//            $this->all() + ['class_id'=> $class_id]
             [
                 'name'=> $this->name,
                 'email'=> $this->email,
@@ -38,7 +35,5 @@ class StudentForm extends Form
                 'class_id'=> $class_id,
                 'section_id'=> $this->section_id
             ]);
-
-        session()->flash('status', 'Post successfully updated.');
     }
 }
