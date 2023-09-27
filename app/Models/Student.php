@@ -9,10 +9,9 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Student extends Model implements HasMedia
+class Student extends Model
 {
     use HasFactory;
-    use InteractsWithMedia;
 
     protected $fillable = [
         'section_id',
@@ -30,13 +29,5 @@ class Student extends Model implements HasMedia
     public function class()
     {
         return $this->belongsTo(Classes::class);
-    }
-
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this
-            ->addMediaConversion('preview')
-            ->fit(Manipulations::FIT_CROP, 300, 300)
-            ->nonQueued();
     }
 }
