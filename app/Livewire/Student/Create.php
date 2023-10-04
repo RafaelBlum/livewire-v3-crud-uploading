@@ -37,7 +37,9 @@ class Create extends Component
     {
         $this->validate();
 
-        $this->form->store(class_id: $this->class_id);
+        $student = $this->form->store(class_id: $this->class_id);
+
+        $this->dispatch('student::created');
 
         return redirect(route('students.index'))
             ->with('status', 'Student successfully created.');

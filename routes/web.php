@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SortitionController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ Route::get('/blank', [AdminController::class, 'blank'])->name('admin.pages.blank
 Route::get('/createAccount', [AdminController::class, 'createAccount'])->name('admin.pages.createAccount');
 Route::get('/forget', [AdminController::class, 'forget'])->name('admin.pages.forget');
 Route::get('/auth/login', [AdminController::class, 'login'])->name('admin.pages.login');
-
+Route::get('students/teste', \App\Livewire\Student\Index::class)->name('students.teste');
 /**==============> route auth */
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('gallerys', GalleryController::class);
     Route::resource('students', StudentController::class);
-//    Route::get('students/{student}/edit', \App\Livewire\Student\Edit::class)->name('students.edit');
+    Route::resource('sortitions', SortitionController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -9,7 +9,7 @@
     {{-- WIRE NAME --}}
     <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Name</span>
-        <input wire:model="form.name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model.lazy="form.name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Informe nome"/>
         <div class="text-red-500">
             @error('form.name') <span class="error">{{ $message }}</span> @enderror
@@ -19,7 +19,7 @@
     {{-- WIRE EMAIL --}}
     <label class="mt-4 block text-sm">
         <span class="text-gray-700 dark:text-gray-400">E-mail</span>
-        <input wire:model="form.email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        <input wire:model.live="form.email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                placeholder="Email"/>
         <div class="text-red-500">
             @error('form.email') <span class="error">{{ $message }}</span> @enderror

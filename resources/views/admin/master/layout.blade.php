@@ -223,16 +223,9 @@
 
     <link rel="stylesheet" href="{{asset('/src/assets/css/tailwind.output.css')}}" />
     {{--<script rel="script" type="text/javascript" src="{{asset("/src/assets/js/alpinejs-3.min.js")}}"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>--}}
+    {{--<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>--}}
     {{--<script rel="script" type="text/javascript" src="{{asset("/src/assets/js/mod-dark.js")}}"></scrxipt>--}}
     <script src="{{asset('/src/assets/js/init-alpine.js')}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            alert("aqui");
-
-
-        });
-    </script>
     @livewireScripts
 </body>
 </html>
