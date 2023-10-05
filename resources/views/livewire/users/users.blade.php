@@ -3,13 +3,18 @@
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Usuários
     </h4>
-    <div class="w-full overflow-hidden rounded-lg shadow-xs">
-        <div class="w-full overflow-x-auto">
-            <table class="w-full whitespace-no-wrap">
+
+    <div class="grid gap-6 mb-8 md:grid-cols-2">
+        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+            <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+                List users
+            </h4>
+
+            {{-- LIST USERS --}}
+            <table class="w-full whitespace-no-wrap" wire:poll.visible>
                 <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-4 py-3">Nome</th>
-                    <th class="px-4 py-3">E-mail</th>
                     <th class="px-4 py-3">Data</th>
                     <th class="px-4 py-3">Ações</th>
                 </tr>
@@ -34,9 +39,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{$user->email}}
-                        </td>
+
                         <td class="px-4 py-3 text-sm">
                             {{date('d-m-Y', strtotime($user->created_at))}}
                         </td>
@@ -58,16 +61,15 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
 
-        {{-- FOOTER TABLE LIST --}}
-        <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+            {{-- FOOTER TABLE LIST --}}
+            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
                 <span class="flex items-center col-span-3">
-                  Showing 21-30 of 100
+                  Showing {{count($users)}} de {{$tot}}
                 </span>
-            <span class="col-span-2"></span>
-            <!-- Pagination -->
-            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                <span class="col-span-2"></span>
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
                   <nav aria-label="Table navigation">
                     <ul class="inline-flex items-center">
                       <li>
@@ -91,7 +93,10 @@
                     </ul>
                   </nav>
                 </span>
+            </div>
         </div>
+
+        @livewire('users.create')
     </div>
 </div>
 

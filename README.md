@@ -209,15 +209,53 @@ if(storage_path('app/public/'.$this->student->image)){
 
 
 
-- Work on Edit Form
-[Link tutorial](https://www.youtube.com/watch?v=9hDL-LVF3OY&t=3317s&ab_channel=TapanSharma)
-- Extract Create Form to a Form Object
-- Extract Edit Form to Form Object
-- Display Flash Messages
-- Delete Individual Records
-- Add Confirm Dialog and Register Custom Directive
-- Implement wire:navigate
+## Dicas e exemplos básicos
+[Yelo Code](https://www.youtube.com/watch?v=VyIjDnYviD4&list=PLqDySLfPKRn543NM_fTrJRdhjBgsogzSC&ab_channel=YeloCode)
+- Como criar uma TAG com um valor inicial
 
+~~~~~~
+    <livewire:raffle.sortition title="Sorteio de inscritos"/>
+    
+    {{-- IN VIEW COMPONENT --}}
+    <title></title>
+~~~~~~
+
+
+- Como passar um valor de uma variável para view de um componente
+> Exemplo criando uma variável, mas poderia receber de uma variável de um component.
+
+~~~~~~
+    <?php
+      $teste = "GitHub";
+    ?>
+    <livewire:raffle.sortition :git="$teste"/>
+~~~~~~
+> No controller temos que inicializar no metodo construtor do component `mount`
+
+~~~~~~
+    public $git;
+
+    public function mount($git = null)
+    {
+        $this->git = $git;
+    }
+~~~~~~
+
+- Actions
+~~~~~~
+    <form wire:submit="save"> ... </form>
+    <button wire:click="methodName"> ... </button>
+~~~~~~
+
+
+- Atualizar algum component modificado
+> Exemplo atualizar table de usuários - `wire:poll.visible`
+
+~~~~~~
+    <table class="w-full whitespace-no-wrap" wire:poll.visible> ... </table>
+~~~~~~
+ 
+- description...
 
 
 
