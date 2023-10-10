@@ -24,7 +24,6 @@ class Index extends Component
     public function delete(Product $product)
     {
         if ($product->image && $product->image != 'storage/default.jpg') {
-
             // Verifique se o arquivo de imagem existe antes de tentar excluí-lo
             if (Storage::exists('public/'.$product->image)) {
                 Storage::delete('public/'.$product->image);

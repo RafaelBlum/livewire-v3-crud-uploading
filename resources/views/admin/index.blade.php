@@ -14,13 +14,16 @@
     {{-- CTA --}}
     <livewire:adm.painel-button lazy/>
 
+    {{-- USERS TABLES/CREATE --}}
+    @livewire('users.users')
+
     {{-- STUDENTS TABLES --}}
     @livewire('student.index')
 
     {{-- STUDENTS TABLES --}}
     @livewire('gallery.index')
 
-    @livewire('users.users')
+
 
     {{-- CHARTS --}}
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Couchbase\UserSettings;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,8 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-//            ClassesSeeder::class,
-            CandidateSeeder::class,
+              ClassesSeeder::class,
+              CandidateSeeder::class,
+              UserSeeder::class,
         ]);
     }
 }

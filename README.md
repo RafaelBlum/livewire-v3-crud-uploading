@@ -211,7 +211,9 @@ if(storage_path('app/public/'.$this->student->image)){
 
 ## Dicas e exemplos básicos
 [Yelo Code](https://www.youtube.com/watch?v=VyIjDnYviD4&list=PLqDySLfPKRn543NM_fTrJRdhjBgsogzSC&ab_channel=YeloCode)
+
 - Como criar uma TAG com um valor inicial
+> Na propria chamada do componente criamos um propriedade e definimos seu valor e na view a TAG já terá seu valor.
 
 ~~~~~~
     <livewire:raffle.sortition title="Sorteio de inscritos"/>
@@ -242,6 +244,7 @@ if(storage_path('app/public/'.$this->student->image)){
 ~~~~~~
 
 - Actions
+> Ações de botões e formulários que reagem com click de botão, form's chamado algum metodo.
 ~~~~~~
     <form wire:submit="save"> ... </form>
     <button wire:click="methodName"> ... </button>
@@ -249,14 +252,204 @@ if(storage_path('app/public/'.$this->student->image)){
 
 
 - Atualizar algum component modificado
-> Exemplo atualizar table de usuários - `wire:poll.visible`
+> Exemplo que atualiza a tabela de usuários. Basta incluir na `div` do componente para o _liveiwre_ fazer a **poll** - `wire:poll.visible`
 
 ~~~~~~
     <table class="w-full whitespace-no-wrap" wire:poll.visible> ... </table>
 ~~~~~~
  
-- description...
+- Data Binding
+> É a forma que vamos interagir e definir valores as propriedades do nosso componente livewire. `wire:model="propertyName"` ou
+> na nova versão 3.0 `wire:model.live="propertyName"`.
 
+~~~~~~view component
+    <form wire:submit="save">
+        <input wire:model.live="name"/>
+        <input wire:model.lazy="name"/>
+    </form>
+~~~~~~
+
+~~~~~~class component
+    class Create extends Component
+    {
+        public $name;
+
+        public function save(){
+            User::create([
+                'name'      => $this->name,
+            ]);
+        }
+    }
+~~~~~~
+
+- Validation
+> Na versão 2.0 do livewire seria assim a validação no metodo save.
+
+~~~~~~
+public function save(){
+    $this->validate(
+        [
+        'name'      => 'required|min:3|max:200',
+        'email'     => 'required|email|unique:users',
+        'password'  => 'required|min:8'
+        ],
+        [
+            'name.required'         => 'Nome é obrigatório!',
+            'name.min'              => 'O minimo para seu nome é 3 caracteres.',
+            'name.max'              => 'O maximo para seu nome é de 200 caracteres',
+            'email.required'        => 'Email é obrigatório!',
+            'email.unique'          => 'Este e-mail já foi registrado!',
+            'password.required'     => 'A senha é obrigatória!',
+            'password.min'          => 'A senha deve ter no minimo 8 caracteres.',
+        ]
+    );
+}
+~~~~~~
+
+> Na versão 3.0 já ficou mais limpo e claro com as anotações.
+
+~~~~~~Exemple
+    use Livewire\Attributes\Rule;    
+
+    #[Rule(['name'=>'required|min:3'], message: ['required' => 'O :attribute é necessário.'], attribute: ['name' => 'nome'])]
+    public $name;
+
+    public function save(){
+        $this->validate()
+        ...
+    }
+~~~~~~
+
+
+
+- Flash Messages
+> Passando messagem de retorno para front-end. Utilizando o `helper` `request() e session()` com flush que passamos `2 argumentos`.
+> E também podemos **_redirecionar_ para outra rota**, juntamente com uma messagem with.
+
+~~~~~~
+    request()->session()->flush('success', 'Usuário criado com sucesso!!');
+    return redirect(router('/...'))->with('success', 'Usuário criado com sucesso!');
+~~~~~~
+
+
+- Paginação
+> A paginação é bem parecida com a do laravel, só precisamos chamar na classe o `WithPagination`.
+
+~~~~~~
+    use WithPagination;
+    
+    public function render()
+    {
+        return view('livewire.users.users',
+        [
+            'users' => User::paginate(2)
+        ]);
+    }
+~~~~~~
+
+> Na view
+~~~~~~
+    <li>
+        {{$users->links()}}
+    </li>
+~~~~~~
+
+- Loading files|states [Documents loading](https://livewire.laravel.com/docs/uploads)
+> Para trabalhar com loading de arquivos, primeiro add na classe `WithFileUploads` e com metodo de armazenar os arquivos `store`.
+
+~~~~~~Class component
+    use WithFileUploads;
+
+    /**
+     *@var TemporaryUploadedFile|mixed $image
+     */
+    #[Rule('required|max:1024', message: 'Image obrigatória ou o tamanho é maior que 1024MB.')]
+    public $image;
+ 
+    public function save()
+    {
+        $this->image->store('image');
+    }
+~~~~~~
+
+> Configuração completa na view. `Visualização temporaria`, `carregamento de progresso`.
+
+~~~~~~View component
+        {{-- IMAGE --}}
+        <label for="prd-img" class="mt-4 block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Image</span>
+
+
+            <div x-data="{ uploading: false, progress: 0}"
+                 x-on:livewire-upload-start="uploading = true"
+                 x-on:livewire-upload-finish="uploading = false"
+                 x-on:livewire-upload-error="uploading = false"
+                 x-on:livewire-upload-progress="progress = $event.detail.progress">
+
+                {{-- INPUT IMAGE --}}
+                <div class="flex justify-center align-middle mt-1">
+
+                    @if($image)
+                        <div class="flex justify-between text-sm mr-3">
+                            <img class="object-cover rounded-full" src="{{$image->temporaryUrl()}}" alt="" width="50"/>
+                        </div>
+                    @endif
+
+                    <input class="lock w-full mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
+                           wire:model="image"
+                           type="file"
+                           id="prd-img">
+                </div>
+
+
+                <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
+                    <div wire:loading.duration.200ms wire:target="image" class="text-white text-sm">
+                        baixando image...
+                    </div>
+                    <progress class="h-4 bg-red-600" max="100" x-bind:value="progress" style="width: 100%; background-color: red;"></progress>
+                </div>
+
+            </div>
+
+            <div class="text-red-500 mt-2">
+                @error('image') <span class="error">{{ $message }}</span> @enderror
+            </div>
+        </label>
+~~~~~~
+
+
+- Eventos [Documents events](https://livewire.laravel.com/docs/events)
+> O metodo `dispatch()` é responsável por fazer a comunicação entre as classes doscomponentes e fazer a atualização `update`.
+> O processo é realizado chamando o `dispatch` gerando um nome e passar dados adicionais com o evento passando os dados como segundo parâmetro
+
+~~~~~~Classe User
+    $user = User::create([// ... ]);
+    $this->dispatch('user-created', $user);
+~~~~~~
+
+~~~~~~Classe List users
+    use Livewire\Attributes\On;
+
+    #[On('user-created')]
+    public function updateList($user = null){ //.. }
+~~~~~~
+
+> Uma alternativa para não criar este evento é trabalhar com `wire:poll` - Desta forma, qualquer atualização no componente será feito o refresh.
+
+~~~~~~
+    <table class="w-full whitespace-no-wrap" wire:poll.visible>
+        @foreach($users as $user)
+        // ...
+        @endforeach
+    </table>
+~~~~~~
+
+## Dicas laravel Backpack annotatio
+Return ids:
+~~~~~~
+$ids = User::all()->pluck('id');
+$ids = User::all()->modelKeys();
+~~~~~~
 
 
 ## Contatos

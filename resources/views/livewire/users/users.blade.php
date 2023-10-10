@@ -4,13 +4,19 @@
         Usuários
     </h4>
 
+    @if(session('success'))
+        <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+            {{session('success')}}
+        </h4>
+    @endif
+
     <div class="grid gap-6 mb-8 md:grid-cols-2">
         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                 List users
             </h4>
 
-            {{-- LIST USERS --}}
+            {{-- LIST USERS  wire:poll.visible--}}
             <table class="w-full whitespace-no-wrap" wire:poll.visible>
                 <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -26,8 +32,13 @@
                             <div class="flex items-center text-sm">
                                 <!-- Avatar with inset shadow -->
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="/storage/default.jpg" alt="" loading="lazy"/>
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                    @if($user->image != 'storage/default.jpg')
+                                        <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . $user->image) }}" alt=""
+                                             width="60px" loading="lazy"/>
+                                    @else
+                                        <img class="object-cover w-full h-full rounded-full" src="/storage/default.jpg" alt="" loading="lazy"/>
+                                    @endif
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <div>
                                     <p class="font-semibold">
@@ -65,7 +76,7 @@
             {{-- FOOTER TABLE LIST --}}
             <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
                 <span class="flex items-center col-span-3">
-                  Showing {{count($users)}} de {{$tot}}
+                  listando {{count($users)}} de {{$tot}}
                 </span>
                 <span class="col-span-2"></span>
                 <!-- Pagination -->
@@ -81,7 +92,6 @@
                       </li>
                       <li>
                           {{$users->links()}}
-
                       </li>
                       <li>
                         <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">

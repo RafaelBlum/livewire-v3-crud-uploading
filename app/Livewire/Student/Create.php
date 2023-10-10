@@ -32,9 +32,10 @@ class Create extends Component
         ]);
     }
 
-
     public function save()
     {
+        sleep(3);
+
         $this->validate();
 
         $student = $this->form->store(class_id: $this->class_id);
@@ -44,7 +45,6 @@ class Create extends Component
         return redirect(route('students.index'))
             ->with('status', 'Student successfully created.');
     }
-
 
     public function updatedClassId($value)
     {

@@ -38,7 +38,7 @@ class Index extends Component
         $this->resetPage();
     }
 
-    public function delete($student)
+    public function delete(Student $student)
     {
         if ($student->image && $student->image != 'storage/default.jpg') {
             // Verifique se o arquivo de imagem existe antes de tentar excluí-lo

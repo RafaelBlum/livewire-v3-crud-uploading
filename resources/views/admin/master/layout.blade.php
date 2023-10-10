@@ -164,7 +164,12 @@
                             <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
                                     @click="open = !open" aria-label="Account" aria-haspopup="true">
 
-                                <img class="object-cover w-8 h-8 rounded-full" src="/storage/default.jpg" alt="" aria-hidden="true"/>
+                                @if(auth()->user()->image != 'storage/default.jpg')
+                                    <img class="object-cover rounded-full" src="{{ asset('storage/' . auth()->user()->image) }}" alt=""
+                                         width="30px" loading="lazy"/>
+                                @else
+                                    <img class="object-cover w-full h-full rounded-full" src="/storage/default.jpg" alt="" loading="lazy"/>
+                                @endif
                             </button>
 
                             {{-- PROFILE SUBMENU USER --}}

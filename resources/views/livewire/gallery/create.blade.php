@@ -9,13 +9,6 @@
             </div>
         @endif
 
-        {{-- MESSAGE LOADING --}}
-        <div class="w-full min-w-0 p-3 mb-2 text-white text-sm bg-purple-600 rounded-lg shadow-xs"
-                wire:loading
-                wire:target="save">
-            Analisando o cadastro do produto novo {{$product}}...
-        </div>
-
         {{-- NAME --}}
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Name</span>
@@ -42,6 +35,9 @@
 
         {{-- IMAGE --}}
         <label for="prd-img" class="mt-4 block text-sm">
+            <div wire:loading wire:target="image" class="w-full min-w-0 p-2 mb-2 text-white text-sm bg-purple-600 rounded-lg shadow-xs">
+                baixando image...
+            </div>
             <span class="text-gray-700 dark:text-gray-400">Image produto</span>
 
 
@@ -74,8 +70,15 @@
             </div>
         @endif
 
+        {{-- MESSAGE LOADING --}}
+        <div class="w-full min-w-0 p-3 mb-1 mt-2 text-red-900 text-sm bg-purple-400 rounded-lg shadow-xs"
+             wire:loading
+             wire:target="save">
+            Analisando a solicitação de produto novo...
+        </div>
+
         {{-- SUBMIT --}}
-        <div class="flex justify-between mt-4 text-sm">
+        <div class="flex justify-between mt-4 text-sm" wire:loading.remove>
             <a href="{{ route('gallerys.index') }}" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                 <span>Cancelar</span>
                 <svg class="w-4 h-4 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"></path></svg>
