@@ -210,7 +210,6 @@ if(storage_path('app/public/'.$this->student->image)){
 
 
 ## Dicas e exemplos básicos
-[Yelo Code](https://www.youtube.com/watch?v=VyIjDnYviD4&list=PLqDySLfPKRn543NM_fTrJRdhjBgsogzSC&ab_channel=YeloCode)
 
 - Como criar uma TAG com um valor inicial
 > Na propria chamada do componente criamos um propriedade e definimos seu valor e na view a TAG já terá seu valor.
@@ -434,15 +433,175 @@ public function save(){
     public function updateList($user = null){ //.. }
 ~~~~~~
 
-> Uma alternativa para não criar este evento é trabalhar com `wire:poll` - Desta forma, qualquer atualização no componente será feito o refresh.
+- Polling [Documents Polling](https://livewire.laravel.com/docs/wire-poll)
+> Uma alternativa para não criar este evento é trabalhar com `wire:poll`
+> Desta forma, qualquer atualização no componente será feito o refresh | `<div wire:poll.visible> ... </div>`.
 
 ~~~~~~
-    <table class="w-full whitespace-no-wrap" wire:poll.visible>
+    <table class="w-full whitespace-no-wrap" wire:poll.keep-alive>
         @foreach($users as $user)
         // ...
         @endforeach
     </table>
 ~~~~~~
+
+- Lazy Loading [Documents Loading](https://livewire.laravel.com/docs/lazy) e animação de Loading Skeletons [Skeletons](https://delba.dev/blog/animated-loading-skeletons-with-tailwind)
+> O componente esqueleto pode ser usado como um indicador de carregamento alternativo ao controle giratório, imitando o conteúdo que será carregado.
+
+~~~~~~
+    public function mount()
+    {
+        sleep(2);
+    }
+
+    /**
+     * https://livewire.laravel.com/docs/lazy
+    */
+    public function placeholder()
+    {
+        return <<<'HTML'
+            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 bg-purple-600 p-2 rounded text-center">
+                    lazy loading Carregando...
+            </p>
+        HTML;
+    }
+~~~~~~
+
+~~~~~~
+    <livewire:adm.painel-button lazy/>
+~~~~~~
+
+- Propriedades Computadas [Property computer](https://livewire.laravel.com/docs/computed-properties)
+> As propriedades computadas permitem acessar valores e armazená-los em cache para acesso futuro durante a solicitação
+
+~~~~~~Class
+    use Livewire\Attributes\Computed;
+
+    #[Computed()]
+    public function users()
+    {
+        return User::paginate(2);
+    }
+~~~~~~
+
+~~~~~~View
+    @foreach($this->users as $user)
+        //..
+    @endforeach
+~~~~~~
+
+- Criar Layout  [Layout](https://livewire.laravel.com/docs/quickstart#create-a-template-layout)
+                - [Tutorial](https://www.youtube.com/watch?v=SKxIXm-MOE4&list=PLqDySLfPKRn543NM_fTrJRdhjBgsogzSC&index=16&ab_channel=YeloCode)
+> o Livewire procurará automaticamente um arquivo de layout.
+
+~~~~~~
+    php artisan livewire:layout
+~~~~~~
+
+~~~~~~
+    <!DOCTYPE html>
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+            <title>{{ $title ?? 'Page Title' }}</title>
+        </head>
+        <body>
+            {{ $slot }}
+        </body>
+    </html>
+~~~~~~
+
+- [Form Objects | ](https://livewire.laravel.com/docs/forms) 
+> Os objetos de formulário permitem reutilizar a lógica do formulário entre os componentes e fornecem uma ótima maneira 
+>de manter a classe do componente mais limpa, agrupando todo o código relacionado ao formulário em uma classe separada.
+
+~~~~~~
+php artisan livewire:form PostForm
+~~~~~~
+
+~~~~~~
+    // class form
+    class PostForm extends Form
+    {
+        #[Rule('required|min:5')]
+        public $title = '';
+     
+        #[Rule('required|min:5')]
+        public $content = '';
+    }
+    
+    //class createForm
+    public PostForm $form;
+     
+    public function save()
+    {
+        $this->validate();
+    
+        Post::create(
+            $this->form->all()
+        );
+    
+        return $this->redirect('/posts');
+    }
+
+    //view
+    {{$form->title}}
+~~~~~~
+
+- [URL Query Parameters | ](https://livewire.laravel.com/docs/url)
+> 
+~~~~~~
+    #[Url(as: 'busca', keep: true, history: true)]
+    public $search = '';
+~~~~~~
+
+- [Offline States | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Multi File Upload | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Wire:navigate (SPA) | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Custom validation attribute name | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Lifecycle hooks | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Keyboard Shortcuts | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+- [Magic Actions | ]()
+> 
+~~~~~~
+
+~~~~~~
+
+
+
+
 
 ## Dicas laravel Backpack annotatio
 Return ids:

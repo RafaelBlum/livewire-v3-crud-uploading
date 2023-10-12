@@ -24,11 +24,7 @@ class PainelButton extends Component
     */
     public function placeholder()
     {
-        return <<<'HTML'
-            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 bg-purple-600 p-2 rounded text-center">
-                    lazy loading Carregando...
-            </p>
-        HTML;
+        return view('admin/master/skeletons/painel');
     }
 
     #[On('student::created')]
