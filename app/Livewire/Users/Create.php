@@ -13,13 +13,13 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    #[Rule(['name'=>'required|min:3'], message: ['required' => 'O :attribute é necessário.'], attribute: ['name' => 'nome'])]
+    #[Rule(['name'=>'required|min:3'], message: ['required' => ':attribute é necessário.'], attribute: ['name' => 'O nome'])]
     public $name;
 
-    #[Rule('required|email|unique:users', message: 'Email é obrigatório!')]
+    #[Rule('required|email|unique:users', message: ':attribute é obrigatório!', attribute: ['email'=> 'O e-mail'])]
     public $email;
 
-    #[Rule('required|min:8', message: 'A senha é obrigatória!')]
+    #[Rule('required|min:8', message: ':as é obrigatória!', as: 'A senha')]
     public $password;
 
     /**@var TemporaryUploadedFile|mixed $image
@@ -31,6 +31,16 @@ class Create extends Component
     {
         return view('livewire.users.create');
     }
+//
+//    public function mount()
+//    {
+//        echo dump("mount");
+//    }
+//
+//    public function boot()
+//    {
+//        echo dump("boot");
+//    }
 
     public function save(){
 

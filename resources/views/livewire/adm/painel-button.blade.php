@@ -1,7 +1,8 @@
 <div>
-    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-        <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+    <div class="p-4 mb-4 text-sm text-white-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert" wire:offline>
+        <span class="font-medium text-red-800">Voçê encontra-se offline!</span> Por favor, tente esabelecer a conexão ou tenta mais tarde.
     </div>
+
     {{-- CTA --}}
     <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
        href="https://github.com/estevanmaito/windmill-dashboard">
@@ -26,7 +27,7 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Total users
+                    <a href="/users" wire:navigate.hover>Total users</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$users}}
@@ -46,7 +47,7 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    <a href="{{route('gallerys.index')}}">Total produtos</a>
+                    <a href="/gallerys" wire:navigate.hover>Total produtos</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$products}}
@@ -65,7 +66,7 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Total estudantes
+                    <a href="/students" wire:navigate.hover>Total estudantes</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$students}}
@@ -86,7 +87,7 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Pending contacts
+                    <a href="/" wire:navigate.hover>Pendentes</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     35

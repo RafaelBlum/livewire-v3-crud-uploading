@@ -446,7 +446,7 @@ public function save(){
 ~~~~~~
 
 - Lazy Loading [Documents Loading](https://livewire.laravel.com/docs/lazy) e animação de Loading Skeletons [Skeletons](https://delba.dev/blog/animated-loading-skeletons-with-tailwind)
-> O componente esqueleto pode ser usado como um indicador de carregamento alternativo ao controle giratório, imitando o conteúdo que será carregado.
+> O componente esqueleto pode ser usado como um indicador de `carregamento alternativo` ao controle giratório, `imitando` o conteúdo que será carregado.
 
 ~~~~~~
     public function mount()
@@ -558,21 +558,27 @@ php artisan livewire:form PostForm
 ~~~~~~
 
 - [Offline States | ]()
+> Para você pode notificar os usuários caso eles estejam offline `wire:offline`.
+
+~~~~~~
+    <div class="p-4 mb-4 text-sm text-white-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert" wire:offline>
+        <span class="font-medium text-red-800">Voçê encontra-se offline!</span> Por favor, tente esabelecer a conexão ou tenta mais tarde.
+    </div>
+~~~~~~
+
+- [Multi File Upload | ](https://livewire.laravel.com/docs/uploads#handling-multiple-files)
+- [Livewire | File Upload - Pinguim do Laravel | 50:30](https://www.youtube.com/watch?v=gYs5cwzgAUA&t=3772s&ab_channel=PinguimdoLaravel%C2%B7RafaelLunardelli)
+> multiple arquivo em um registro
+> Precisa criar relação do usuário com imagens
+
+~~~~~~
+
+~~~~~~
+
+- [Wire:navigate | ](https://livewire.laravel.com/docs/wire-navigate)
 > 
 ~~~~~~
-
-~~~~~~
-
-- [Multi File Upload | ]()
-> 
-~~~~~~
-
-~~~~~~
-
-- [Wire:navigate (SPA) | ]()
-> 
-~~~~~~
-
+<a href="/" wire:navigate.hover>Dashboard</a>
 ~~~~~~
 
 - [Custom validation attribute name | ]()
@@ -581,11 +587,20 @@ php artisan livewire:form PostForm
 
 ~~~~~~
 
-- [Lifecycle hooks | ]()
-> 
-~~~~~~
+- [Lifecycle hooks | ](https://livewire.laravel.com/docs/lifecycle-hooks)
+> Ciclo de vida dos hooks que permitem executar código em pontos específicos durante o ciclo de vida de um componente.
 
-~~~~~~
+| Hook Method   | Explicação    |
+| :---          |     :---      |
+| `mount()`     | *É como se fosse o `__construct()` de uma classe. * _Chamado quando um componente é criado._ |
+| `hydrate()`   | _Chamado quando um componente é reidratado no início de uma solicitação subsequente._|
+| `boot()`      | *É um metodo que sempre é chamado sempre. * _Chamado no início de cada solicitação no backend. Tanto inicial quanto subsequente._|
+| `updating()`  | _Chamado antes de atualizar uma propriedade de componente._|
+| `updated()`   | _Chamado após atualizar uma propriedade._|
+| `rendering()` | _Chamado antes `render()` é chamado._|
+| `rendered()`  | _Chamado depois `render()` é chamado._|
+| `dehydrate()` | _Chamado no final de cada solicitação de componente._|
+
 
 - [Keyboard Shortcuts | ]()
 > 

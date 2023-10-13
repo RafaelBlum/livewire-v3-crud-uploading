@@ -67,7 +67,7 @@
 
 
         <div class="flex justify-center mt-4 text-sm">
-            <button type="submit" class="flex w-full items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+            <button wire:confirm.prompt="Você quer realmente criar o usuário? \n Para confirmar  digite CONFIRME to confirm |CONFIRM" type="submit" class="flex w-full items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                 <span>Criar usuário</span>
                 <i class="text-2xl ri-save-line"></i>
             </button>

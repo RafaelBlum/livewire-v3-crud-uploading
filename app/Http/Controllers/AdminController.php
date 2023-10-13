@@ -6,15 +6,44 @@ use App\Models\Product;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
+
+        // Grafic students
+        $studentData = Student::select([
+            DB::raw('YEAR(created_at) as ano'),
+            DB::raw('COUNT(*) as total')
+        ])
+            ->groupBy('ano')
+            ->orderBy('ano', 'asc')
+            ->get();
+
+        //Arrays datas
+        foreach ($studentData as $item) {
+            $ano[] = $item->ano;
+            $total[] = $item->total;
+        }
+
+        //Format chart style
+        $studentLabel = "' Estudantes cadastrados no ano'";
+        $studentAno = implode(',', $ano);
+        $studentTotal = implode(',', $total);
+
+
+//        dd($studentData);
+
         return view('admin/index', [
             'users' => User::all()->count(),
             'products' => Product::all()->count(),
-            'students' => Student::all()->count()
+            'students' => Student::all()->count(),
+            'chart' => 'Gráficos de estudantes',
+            'studentLabel' => $studentLabel,
+            'studentAno' => $studentAno,
+            'studentTotal' => $studentTotal
         ]);
     }
 
