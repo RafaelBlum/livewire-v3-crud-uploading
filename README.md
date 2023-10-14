@@ -602,16 +602,31 @@ php artisan livewire:form PostForm
 | `dehydrate()` | _Chamado no final de cada solicitação de componente._|
 
 
-- [Keyboard Shortcuts | ]()
-> 
+- [Keyboard Shortcuts | ](https://livewire.laravel.com/docs/actions#listening-for-specific-keys)
+> Os keywords são eventos de ações para o usuário.
+~~~~~~
+<form wire:submit.prevent="save" enctype="multipart/form-data" wire:keydown.space.window="save">
+    @csrf
+    //...
+</form>
 ~~~~~~
 
+- [Magic Actions | ](https://livewire.laravel.com/docs/actions#magic-actions)
+> Livewire fornece um conjunto de ações "mágicas" que permitem executar tarefas comuns em seus componentes sem definir métodos personalizados.
 ~~~~~~
+    //$parent
+    //$set          | Modiica uma propriedade.
+    //$refresh      | aciona uma nova renderização do seu componente
+    //$toggle
+    //$dispatch
+    //$event
 
-- [Magic Actions | ]()
-> 
-~~~~~~
-
+    //exemples
+    <button wire:click="$refresh">Refresh</button>
+    <button wire:click="$set('oldValue', 'newValue')">Reset Set</button>
+    <button wire:click="$toggle('sortAsc')">
+        Sort {{ $sortAsc ? 'Descending' : 'Ascending' }}
+    </button>
 ~~~~~~
 
 
