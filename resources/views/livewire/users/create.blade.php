@@ -20,7 +20,7 @@
         {{-- WIRE NAME --}}
         <label class="text-sm w-full">
             <span class="text-gray-700 dark:text-gray-400">Name</span>
-            <input wire:model.lazy="name" class="w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+            <input wire:model.blur="name" class="w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                    placeholder="Informe nome"/>
             <div class="text-red-500">
                 @error('name') <span class="error">{{ $message }}</span> @enderror
@@ -54,7 +54,7 @@
                 <span class="text-gray-700 dark:text-gray-400">Image</span>
                 <div class="flex justify-center align-middle">
                     <input class="lock w-full mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                           wire:model="image"
+                           wire:model.live="image"
                            type="file"
                            id="prd-img">
                 </div>

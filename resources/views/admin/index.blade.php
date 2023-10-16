@@ -106,7 +106,7 @@
 
     // change this to the id of your chart element in HMTL
     const pieCtx = document.getElementById('pie')
-    console.log(pieCtx);
+
     window.myPie = new Chart(pieCtx, pieConfig)
 
     /**

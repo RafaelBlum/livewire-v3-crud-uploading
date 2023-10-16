@@ -1,12 +1,12 @@
-<div>
+<div class="mb-6">
+    {{-- MESSAGE STATUS --}}
     @if (session('status'))
         <div class="min-w-0 p-3 mb-2 text-white text-sm bg-green-600 rounded-lg shadow-xs">
             {{ session('status') }}
         </div>
     @endif
-    {{-- Table list with actions crud --}}
 
-
+    {{-- TABLE STUDENTS --}}
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
@@ -25,19 +25,25 @@
                             Estudantes
                         </span>
                         <div class="relative text-gray-500 focus-within:text-purple-600">
-                        <input  wire:model.live="search" class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+
+                        {{-- SEARCH STUDENT --}}
+                        <input wire:model.live="search" class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                             placeholder="buscar aqui..."
                             name="search"/>
+
                             <button wire:click="$set('search', '')" class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-r-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                 @if($search) <i class="ri-brush-line"></i> Limpar @else <i class='ri-search-line'></i> Pesquisar @endif
                             </button>
                         </div>
                     </label>
+
+                    {{-- LIST STUDENTS --}}
                     @foreach($students as $student)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
-                                    <!-- Avatar with inset shadow -->
+
+                                    {{-- AVATAR IMAGE --}}
                                     <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                                         @if($student->image != 'storage/default.jpg')
                                             <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . $student->image) }}" alt=""
@@ -48,6 +54,7 @@
                                         <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                     </div>
                                     <div>
+                                        {{-- NAME/EMAIL --}}
                                         <p class="font-semibold text-md">
                                             {{$student->name}}
                                         </p>
@@ -57,29 +64,48 @@
                                     </div>
                                 </div>
                             </td>
+
+                            {{-- DISCIPLINA --}}
                             <td class="px-4 py-3 text-sm">
                                 {{$student->class->name}}
                             </td>
+
+                            {{-- TURMA --}}
                             <td class="px-4 py-3 text-xs">
                                 <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                   {{$student->section->name}}
                                 </span>
                             </td>
+
+                            {{-- CREATE DATE --}}
                             <td class="px-4 py-3 text-sm">
                                 {{date('d-m-Y', strtotime($student->created_at))}}
                             </td>
+
+                            {{-- ACTINOS --}}
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm">
-                                    {{--    :Passando ID student via rota controller laravel
-                                            :Poderiamos passar direto pelo component, direto na view sem layout
-                                            :<livewire:student.edit :key='$student'/>
-                                    --}}
+
+                                    {{-- EDIT --}}
                                     <a href="{{route("students.edit", $student->id)}}" class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
                                         <i class="ri-edit-2-fill text-2xl"></i>
                                     </a>
-                                    <a wire:confirm="Are you sure?" wire:click="delete({{$student->id}})"  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
+
+                                    {{-- MESSAGE LOADING --}}
+                                    <div wire:loading wire:target="delete({{$student}})">
+                                        <svg aria-hidden="true" role="status" class="inline w-4 h-4 mr-3 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="#1C64F2"/>
+                                        </svg>
+                                    </div>
+
+                                    {{-- DELETE --}}
+                                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete"
+                                            wire:confirm="Deseja realmente deletar"
+                                            wire:click="delete({{$student}})"
+                                            wire:loading.attr="disabled">
                                         <i class="ri-delete-bin-5-line text-2xl"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -88,63 +114,31 @@
             </table>
         </div>
 
-        {{-- FOOTER TABLE LIST --}}
-        <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                <span class="flex items-center col-span-3">
-                  Showing 21-30 of {{$students}}
-                </span>
-            <span class="col-span-2"></span>
-            <!-- Pagination -->
-            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-                      <li>
-                        <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                          <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                            <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                          {{$students->links()}}
+        {{-- FOOTER PAGINATOR --}}
+        {{$students->links('livewire/utilities/paginator')}}
 
-                      </li>
-                      <li id="footerlinks">
-                        <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                          <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                            <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
-        </div>
     </div>
 </div>
+{{--<script>--}}
+{{--    document.addEventListener('livewire:init', () => {--}}
+{{--        var selectedStudentId = null;--}}
+{{--        Livewire.directive('confirm', ({ el, directive, component, cleanup }) => {--}}
+{{--            let content =  directive.expression--}}
 
 
+{{--            let onClick = e => {--}}
+{{--                if (! confirm(content)) {--}}
+{{--                    e.preventDefault()--}}
+{{--                    e.stopImmediatePropagation()--}}
+{{--                }--}}
+{{--            }--}}
 
-<script>
-    document.addEventListener('livewire:init', () => {
-        var selectedStudentId = null;
-        Livewire.directive('confirm', ({ el, directive, component, cleanup }) => {
-            let content =  directive.expression
+{{--            el.addEventListener('click', onClick, { capture: true })--}}
 
-
-            let onClick = e => {
-                if (! confirm(content)) {
-                    e.preventDefault()
-                    e.stopImmediatePropagation()
-                }
-            }
-
-            el.addEventListener('click', onClick, { capture: true })
-
-            cleanup(() => {
-                el.removeEventListener('click', onClick)
-            })
-        })
-    })
-</script>
+{{--            cleanup(() => {--}}
+{{--                el.removeEventListener('click', onClick)--}}
+{{--            })--}}
+{{--        })--}}
+{{--    })--}}
+{{--</script>--}}
 

@@ -26,8 +26,8 @@
                 </svg>
             </div>
             <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    <a href="/users" wire:navigate.hover>Total users</a>
+                <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <a href="/users" wire:navigate.hover>Usuários</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$users}}
@@ -46,8 +46,8 @@
                 </svg>
             </div>
             <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    <a href="/gallerys" wire:navigate.hover>Total produtos</a>
+                <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <a href="/gallerys" wire:navigate.hover>Produtos</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$products}}
@@ -65,8 +65,8 @@
                 </svg>
             </div>
             <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    <a href="/students" wire:navigate.hover>Total estudantes</a>
+                <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <a href="/students" wire:navigate.hover>Estudantes</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {{$students}}
@@ -86,11 +86,15 @@
                 </svg>
             </div>
             <div>
-                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
                     <a href="/" wire:navigate.hover>Pendentes</a>
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    35
+                    <button type="button"
+                            wire:click="delete"
+                            wire:confirm="Are you sure you want to delete this post?">
+                        Delete post
+                    </button>
                 </p>
             </div>
         </div>

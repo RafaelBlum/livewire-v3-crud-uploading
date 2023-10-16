@@ -11,7 +11,7 @@ use Livewire\Attributes\Url;
 
 class Index extends Component
 {
-    #[Url(as: 'busca', keep: true)]
+    #[Url(as: 'busca', keep: true, history: true)]
     public $search = '';
 
     public function render()

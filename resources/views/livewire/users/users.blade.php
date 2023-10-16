@@ -91,7 +91,7 @@
                         </button>
                       </li>
                       <li>
-                          {{$users->links()}}
+                          {{$users->links('livewire/utilities/paginator')}}
                       </li>
                       <li>
                         <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">

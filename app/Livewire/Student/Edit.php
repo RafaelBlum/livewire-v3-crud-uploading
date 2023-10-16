@@ -49,6 +49,8 @@ class Edit extends Component
 
     public function update()
     {
+        sleep(3);
+
         $this->validate();
 
         $this->form->update($this->class_id);

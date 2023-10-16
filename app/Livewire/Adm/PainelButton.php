@@ -19,6 +19,11 @@ class PainelButton extends Component
         sleep(2);
     }
 
+    public function delete()
+    {
+
+    }
+
     /**
      * https://livewire.laravel.com/docs/lazy
     */

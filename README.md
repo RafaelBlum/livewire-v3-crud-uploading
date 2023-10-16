@@ -207,6 +207,12 @@ if(storage_path('app/public/'.$this->student->image)){
             }
 ~~~~~~
 
+- DATA BIND
+> Passando ID student via rota controller laravel. Poderiamos passar direto pelo component, direto na view sem layout
+~~~~~~
+    <livewire:student.edit :key='$student'/>
+~~~~~~
+
 
 
 ## Dicas e exemplos básicos

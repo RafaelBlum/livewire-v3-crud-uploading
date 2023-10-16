@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="save" enctype="multipart/form-data" wire:keydown.shift.space.window="save">
+    <form wire:submit="save" enctype="multipart/form-data" wire:keydown.shift.space.window="save">
         @csrf
 
         {{-- MESSAGE STATUS --}}
@@ -13,7 +13,7 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Name</span>
             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                   wire:model.defer="product"
+                   wire:model="product"
                    name="product"
                    placeholder="Nome produto"/>
             <div class="text-red-500">
@@ -25,7 +25,7 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Valor</span>
             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                   wire:model.defer="price"
+                   wire:model="price"
                    name="price"
                    placeholder="Nome produto"/>
             <div class="text-red-500">
@@ -49,7 +49,7 @@
 
                 {{-- INPUT IMAGE --}}
                 <input class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                       wire:model.defer="image" type="file" id="image" name="image">
+                       wire:model="image" type="file" id="image" name="image">
 
                 <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
                     <progress class="h-4 bg-red-600" max="100" x-bind:value="progress" style="width: 100%"></progress>

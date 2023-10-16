@@ -109,7 +109,7 @@
                         </button>
                       </li>
                       <li>
-                          {{$products->links()}}
+                          {{$products->links('livewire/utilities/paginator')}}
 
                       </li>
                       <li>

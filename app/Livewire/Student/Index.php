@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use function League\Flysystem\Local\ensureDirectoryExists;
 
 class Index extends Component
 {
@@ -16,30 +17,41 @@ class Index extends Component
     /**
      * URL Query Parameters
      * https://livewire.laravel.com/docs/url
-     * https://livewire.laravel.com/docs/computed-properties
     */
     #[Url(as: 'busca', keep: true, history: true)]
     public $search = '';
 
+    /**
+     * Render page and search students paginator
+     */
     public function render()
     {
         $students = Student::query()
             ->when($this->search, fn ($query)=> $query->where('name', 'like', '%'.$this->search.'%'))
             ->orWhere('email', 'like', '%'.$this->search.'%')
-            ->paginate(5);
+            ->paginate(2);
 
         return view('livewire.student.index', [
-            'students' => $students
+            'students' => $students,
+            'tot' => Student::all()->count()
         ]);
     }
 
+    /**
+     *
+     */
     public function search()
     {
         $this->resetPage();
     }
 
-    public function delete(Student $student)
+    /**
+     *
+     */
+    public function delete($student)
     {
+        sleep(3);
+//        dd($student->image);
         if ($student->image && $student->image != 'storage/default.jpg') {
             // Verifique se o arquivo de imagem existe antes de tentar excluí-lo
             if (Storage::exists('public/'.$student->image)) {
@@ -47,12 +59,22 @@ class Index extends Component
             }
         }
 
+        dd('AQUI');
         $student->delete();
 
         return redirect()->route('students.index')
             ->with('status', 'Estudante deletado com sucesso!');
     }
 
+    public function teste($id)
+    {
+        sleep(3);
+        $this->js('alert(' . $id  . ')');
+    }
+
+    /**
+     *
+    */
     #[On('student-create')]
     public function updateIndex($student = null)
     {
