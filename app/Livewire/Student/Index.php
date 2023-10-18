@@ -6,6 +6,7 @@ use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use function League\Flysystem\Local\ensureDirectoryExists;
@@ -32,26 +33,19 @@ class Index extends Component
             ->paginate(2);
 
         return view('livewire.student.index', [
-            'students' => $students,
-            'tot' => Student::all()->count()
+            'students' => $students
         ]);
     }
 
     /**
-     *
+     * Delete student
+     * Storage files
+     * redirect route and session message
      */
-    public function search()
-    {
-        $this->resetPage();
-    }
-
-    /**
-     *
-     */
-    public function delete($student)
+    public function delete(Student $student)
     {
         sleep(3);
-//        dd($student->image);
+
         if ($student->image && $student->image != 'storage/default.jpg') {
             // Verifique se o arquivo de imagem existe antes de tentar excluí-lo
             if (Storage::exists('public/'.$student->image)) {
@@ -59,20 +53,14 @@ class Index extends Component
             }
         }
 
-        dd('AQUI');
         $student->delete();
 
         return redirect()->route('students.index')
             ->with('status', 'Estudante deletado com sucesso!');
     }
 
-    public function teste($id)
-    {
-        sleep(3);
-        $this->js('alert(' . $id  . ')');
-    }
-
     /**
+     * Listening for events #https://livewire.laravel.com/docs/events
      *
     */
     #[On('student-create')]

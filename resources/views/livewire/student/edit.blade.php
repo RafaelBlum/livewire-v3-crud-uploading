@@ -1,8 +1,25 @@
 {{-- WIRE SUBMIT --}}
-<form wire:submit="update" class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<form wire:submit="update" class="px-4 py-3 mb-8 bg-white rounded-lg dark:bg-gray-800">
+
+    {{-- MESSAGE STATUS --}}
     @if (session('status'))
         <div class="min-w-0 p-3 mb-2 text-white text-sm bg-green-600 rounded-lg shadow-xs">
-            {{ session('status') }}
+
+        </div>
+        <div id="toast-success" class="flex items-center w-full p-4 mb-4 text-gray-300 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-700" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                </svg>
+                <span class="sr-only">Check icon</span>
+            </div>
+            <div class="ml-3 text-sm font-normal">{{ session('status') }}</div>
+            <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-700 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
         </div>
     @endif
 
@@ -28,20 +45,47 @@
 
     {{-- IMAGE --}}
     <label for="prd-img" class="mt-4 block text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Image</span>
-        <div class="flex justify-center align-middle">
-            @if($this->student->image)
-                <div class="flex justify-between text-sm mr-3">
-                    <img class="object-cover rounded-full" src="{{(isset($image) ? $image->temporaryUrl() : ($this->student->image != 'storage/default.jpg' ? asset('storage/' . $this->student->image) : asset($this->student->image)))}}" alt="" width="50"/>
-                </div>
-            @endif
-            <input class="lock w-full mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
-                   wire:model.live="form.image"
-                   type="file"
-                   id="prd-img">
+        <div wire:loading wire:target="form.image" class="w-full min-w-0 p-2 mb-2 text-white text-sm bg-purple-600 rounded-lg shadow-xs">
+            baixando image...
         </div>
-        <div class="text-red-500">
-            @error('form.image') <span class="error">{{ $message }}</span> @enderror
+        @if($form->image)
+            <div class="text-gray-700 dark:text-green-400 mb-2">Imagem seleciona com sucesso! </div>
+        @else
+            <div class="text-gray-700 dark:text-gray-400 mb-2">Escolha sua imagem</div>
+        @endif
+
+
+        <div x-data="{ uploading: false, progress: 0}"
+             x-on:livewire-upload-start="uploading = true"
+             x-on:livewire-upload-finish="uploading = false"
+             x-on:livewire-upload-error="uploading = false"
+             x-on:livewire-upload-progress="progress = $event.detail.progress">
+
+            {{-- INPUT IMAGE --}}
+            <div class="flex justify-center align-middle">
+                @if($form->image == null )
+                    <img class="object-cover rounded-full mr-2" src="{{ ($student->image == 'storage/default.jpg' ? asset($student->image) : asset('storage/'.$student->image)) }}" alt="{{$student->name}}"
+                         width="50px" loading="lazy"/>
+                @else
+                    <img class="p-1 rounded-full ring-2 ring-gray-300 dark:ring-green-400 object-cover mr-2" src="{{$form->image->temporaryUrl()}}"
+                         alt="" width="50" loading="lazy"/>
+                @endif
+
+
+                <input class="lock w-full ml-2 mt-1 text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
+                       wire:model.live="form.image"
+                       type="file"
+                       id="prd-img">
+            </div>
+
+            <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
+                <progress class="h-4 bg-red-600" max="100" x-bind:value="progress" style="width: 100%"></progress>
+            </div>
+
+        </div>
+
+        <div class="text-red-500 mt-2">
+            @error('image') <span class="error">{{ $message }}</span> @enderror
         </div>
     </label>
 

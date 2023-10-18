@@ -11,6 +11,7 @@
     <title>Dashboard</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     {{-- ICON REMIXICON --}}
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -240,6 +241,9 @@
     {{--<script src="{{asset('/src/assets/js/chart.min_4.4.0.js')}}" defer></script>--}}
     {{--  <script src="{{asset('/src/assets/js/charts-pie.js')}}" defer></script>--}}
     <script src="{{asset('/src/assets/js/charts-lines.js')}}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+
     @stack('grafico')
 </body>
 </html>

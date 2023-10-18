@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "flowbite": "^1.8.1",
         "js-confetti": "^0.11.0"
     }
 }

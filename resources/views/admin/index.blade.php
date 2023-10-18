@@ -8,7 +8,7 @@
       Dashboard
     </h2>
 
-    {{-- CTA --}}
+    {{-- CTA #Lazy loading: https://livewire.laravel.com/docs/lazy --}}
     <livewire:adm.painel-button lazy/>
 
     {{-- USERS TABLES/CREATE --}}
@@ -22,9 +22,7 @@
 
 
 
-    {{-- CHARTS --}}
-
-
+    {{-- CHARTS #ChartJS --}}
     <div class="grid gap-6 mb-8 md:grid-cols-2 my-6">
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">

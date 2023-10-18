@@ -87,14 +87,7 @@
             </div>
             <div>
                 <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <a href="/" wire:navigate.hover>Pendentes</a>
-                </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <button type="button"
-                            wire:click="delete"
-                            wire:confirm="Are you sure you want to delete this post?">
-                        Delete post
-                    </button>
+                    <a href="{{route("sortitions.index")}}" wire:navigate.hover>Sorteio</a>
                 </p>
             </div>
         </div>

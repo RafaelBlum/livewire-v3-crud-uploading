@@ -8,16 +8,23 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     #[Url(as: 'busca', keep: true, history: true)]
     public $search = '';
 
     public function render()
     {
+        $products = Product::query()
+            ->when($this->search, fn ($query)=> $query->where('product', 'like', '%'.$this->search.'%'))
+            ->paginate(2);
+
         return view('livewire.gallery.index',[
-            'products' => Product::paginate(3)
+            'products' => $products
         ]);
     }
 
