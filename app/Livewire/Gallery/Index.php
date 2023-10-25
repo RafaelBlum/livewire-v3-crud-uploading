@@ -17,6 +17,10 @@ class Index extends Component
     #[Url(as: 'busca', keep: true, history: true)]
     public $search = '';
 
+    /**
+     * List products
+     * Pagination
+    */
     public function render()
     {
         $products = Product::query()
@@ -28,6 +32,9 @@ class Index extends Component
         ]);
     }
 
+    /**
+     *
+     */
     public function delete(Product $product)
     {
         if ($product->image && $product->image != 'storage/default.jpg') {
@@ -39,10 +46,13 @@ class Index extends Component
 
         $product->delete();
 
-        return redirect()->route('students.index')
+        return redirect()->route('gallerys.index')
             ->with('status', 'Product deletado com sucesso!');
     }
 
+    /**
+     *
+     */
     #[Computed]
     public function products()
     {

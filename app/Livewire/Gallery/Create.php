@@ -16,10 +16,10 @@ class Create extends Component
 
     use WithFileUploads;
 
-    #[Rule('required|min:3')]
+    #[Rule('required|min:3', message: 'Nome do produto é obrigatório.')]
     public string $product;
 
-    #[Rule('required')]
+    #[Rule('required', message: 'Valor é obrigatório.')]
     public string $price;
 
     /**@var TemporaryUploadedFile|mixed $image
@@ -46,6 +46,6 @@ class Create extends Component
 
         session()->flash('status', 'Produto cadastrado com sucesso!');
 
-        return redirect(route('gallerys.create'));
+        return redirect(route('gallerys.index'));
     }
 }

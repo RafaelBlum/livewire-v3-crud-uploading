@@ -1,15 +1,10 @@
 <div class="mb-4">
-
-
     <div class="grid gap-2 md:grid-cols{{($image ? '-2': '')}}">
-        <form wire:submit="save" enctype="multipart/form-data" wire:keydown.shift.space.window="save">
+        <form wire:submit="save" enctype="multipart/form-data" wire:submit="save" class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-700">
             @csrf
 
             {{-- MESSAGE STATUS --}}
             @if (session('status'))
-                <div class="min-w-0 p-3 mb-2 text-white text-sm bg-green-600 rounded-lg shadow-xs">
-
-                </div>
                 <div id="toast-success" class="flex items-center w-full p-4 mb-4 text-gray-300 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-700" role="alert">
                     <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -28,28 +23,37 @@
             @endif
 
             {{-- NAME --}}
-            <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                       wire:model.live="product"
-                       name="product"
-                       placeholder="Nome produto"/>
-                <div class="text-red-500">
-                    @error('product') <span class="error">{{ $message }}</span> @enderror
+            <div>
+                <div class="relative">
+                    <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "
+                           wire:model.live="product"
+                           name="product"/>
+                    <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Nome do produto
+                    </label>
                 </div>
-            </label>
+                @error('product')
+                    <p id="outlined_success_help" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                        <span class="font-medium">Atenção! </span> {{ $message }}.</p>
+                @enderror
+            </div>
 
             {{-- PRICE --}}
-            <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Valor</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                       wire:model.live="price"
-                       name="price"
-                       placeholder="Valor R$"/>
-                <div class="text-red-500">
-                    @error('price') <span class="error">{{ $message }}</span> @enderror
+            <div class="mt-3">
+                <div class="relative">
+                    <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "
+                           wire:model.live="price"
+                           name="price"/>
+                    <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Valor R$
+                    </label>
                 </div>
-            </label>
+                @error('product')
+                <p id="outlined_success_help" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">Atenção! </span> {{ $message }}.</p>
+                @enderror
+            </div>
+
 
             {{-- IMAGE --}}
             <label for="prd-img" class="mt-4 block text-sm">
@@ -66,7 +70,7 @@
                      x-on:livewire-upload-progress="progress = $event.detail.progress">
 
                     {{-- INPUT IMAGE --}}
-                    <input class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
+                    <input class="block w-full mt-1 border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
                            wire:model.live="image" type="file" id="image" name="image">
 
                     <div class="m-8" x-show="uploading" class="h-1 w-full bg-neutral-200 dark:bg-neutral-600 bg-red-600">
@@ -80,10 +84,6 @@
                 </div>
             </label>
 
-
-
-
-
             {{-- MESSAGE LOADING --}}
             <div wire:loading wire:target="save" class="w-full py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 items-center">
                 <svg aria-hidden="true" role="status" class="inline w-4 h-4 mr-3 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +94,7 @@
             </div>
 
             {{-- SUBMIT --}}
-            <div class="flex justify-between mt-4 text-sm" wire:loading.remove>
+            <div class="flex justify-between mt-4 text-sm">
                 <a data-tooltip-target="tooltip-cancel" data-tooltip-placement="top" href="{{ route('gallerys.index') }}" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                     <span>Cancelar</span>
                     <svg class="w-4 h-4 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"></path></svg>
@@ -117,8 +117,8 @@
         </form>
 
         @if($image)
-            <div class="max-w-full min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <img class="max-w-full rounded-lg" src="{{$image->temporaryUrl()}}" alt=""/>
+            <div class="max-w-full min-w-0 p-2 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                <img class="rounded-lg" src="{{$image->temporaryUrl()}}" alt="" width="300"/>
             </div>
         @endif
 

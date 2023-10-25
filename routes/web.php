@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SortitionController;
 use App\Http\Controllers\StudentController;
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::resource('gallerys', GalleryController::class);
+    Route::resource('gallerys', ProductController::class);
     Route::resource('students', StudentController::class);
     Route::resource('sortitions', SortitionController::class);
 });
