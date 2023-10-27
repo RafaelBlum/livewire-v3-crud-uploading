@@ -4,7 +4,7 @@
     <div class="grid gap-2 md:grid-cols{{($image ? '-2': '')}}">
 
         {{-- WIRE SUBMIT --}}
-        <form wire:submit="update({{$product->id}})" class="px-4 py-3 mb-8 bg-white rounded-lg dark:bg-gray-800">
+        <form wire:submit="update({{$product->id}})" class="px-4 py-3 mb-8 bg-white rounded-lg dark:bg-gray-700">
             {{-- MESSAGE STATUS --}}
             @if (session('status'))
                 <div id="toast-success" class="flex items-center w-full p-4 mb-4 text-gray-300 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-700" role="alert">
@@ -24,28 +24,38 @@
                 </div>
             @endif
 
-
             {{-- NAME --}}
-            <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Nome produto</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                       wire:model.live="description"
-                       placeholder="Informe nome produto"/>
-                <div class="text-red-500 mt-2">
-                    @error('description') <span class="error">{{ $message }}</span> @enderror
+            <div>
+                <div class="relative">
+                    <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "
+                           wire:model.live="description"
+                           name="description"/>
+                    <label for="small_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-700 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 left-1">
+                        Nome do produto
+                    </label>
                 </div>
-            </label>
+                @error('description')
+                <p id="outlined_success_help" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">Atenção! </span> {{ $message }}</p>
+                @enderror
+            </div>
+
 
             {{-- PRICE--}}
-            <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Valor</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                       wire:model.live="price"
-                       placeholder="Valor R$"/>
-                <div class="text-red-500 mt-2">
-                    @error('price') <span class="error">{{ $message }}</span> @enderror
+            <div class="mt-3">
+                <div class="relative">
+                    <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "
+                           wire:model.live="price"
+                           name="price"/>
+                    <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Valor R$
+                    </label>
                 </div>
-            </label>
+                @error('price')
+                <p id="outlined_success_help" class="mt-2 text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">Atenção! </span> {{ $message }}</p>
+                @enderror
+            </div>
 
 
             {{-- IMAGE --}}
@@ -76,7 +86,7 @@
                         @endif
 
 
-                        <input class="block w-full mt-1 border text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-700 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
+                        <input class="block w-full mt-1 border text-sm dark:text-gray-800 dark:border-gray-600 dark:bg-gray-800 shadow-sm rounded-md focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-3 file:px-4 dark:focus:shadow-outline-gray dark:file:text-gray-400"
                                wire:model.live="image"
                                type="file"
                                id="prd-img">
@@ -124,7 +134,7 @@
     </div>
 
     {{-- POPOVER MESSAGE --}}
-    <div data-popover id="popover-save" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+    <div data-popover id="popover-save" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700">
         <div class="p-1 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
             <h3 class="font-semibold text-gray-900 dark:text-white">{{$product->product}}</h3>
         </div>
