@@ -1,7 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-# [Gallery livewire products](#) 
-
 <p align="center">
 	<a href="#"  target="_blank" title="calculadora com livewire">
 		<img src="public/images/gif-todo-3.gif" alt="Todo list with livewire" width="100%">
@@ -24,41 +22,20 @@
 </p>
 
 
-# 🚀 [Projeto Uploading image livewire](#)
+# 🚀 [Livewire 3.0 - CRUD and uploading image](#) 
 
-### Objetivo d projeto
+### Objetivo do projeto
 
-Within the download you'll find the following directories and files:
+Demonstrar o poder do `livewire` na `versão 3.0` com a criação de `CRUD` de `produto`, `estudante` e `users`, juntamente com o `uploading de imagens`.
+E inclui um `sorteio ramdomico` de estudantes, `graficos com chartJS`, e `adaptação de layout administrativo` para o projeto trabalhando as views 
+com partials, layouts e `skeletons de loadings`.
 
-```
-Component structure
-├── app Component controller
-│   ├── Livewire
-│   │   ├── gallery
-│   │   │   ├── Create
-│   │   │   ├── Index
-│   │   ├── student
-│   │   │   ├── Create
-│   │   │   ├── Index
-│   │   ├── adm
-│   │   │   ├── PainelButton
-├── resources - views
-│   ├── Livewire
-│   │   ├── gallery
-│   │   │   ├── create
-│   │   │   ├── index
-│   │   ├── student
-│   │   │   ├── create
-│   │   │   ├── index
-│   │   ├── adm
-│   │   │   ├── painelButton
-```
 
 ###  Tecnologias (serviços externos, libs, frameworks, hospedagem etc.) e instalações.
 
 - 🧩 <a href="#" target="_blank">Php `8.2`</a>
-- 🧩 <a href="#" target="_blank">Laravel `9.52.5`</a> [Projeto laravel] composer create-project laravel/laravel name-project
-- 🧩 <a href="#" target="_blank">Livewire `2.12`</a> [Livewire] composer require livewire/livewire
+- 🧩 <a href="#" target="_blank">Laravel `10.10`</a> [Projeto laravel] composer create-project laravel/laravel name-project
+- 🧩 <a href="#" target="_blank">Livewire `3.0`</a> [Livewire] composer require livewire/livewire
 - 🧩 <a href="#" target="_blank">laravel debugbar `3.8`</a> [Debugbar] composer require barryvdh/laravel-debugbar --dev
 - 🧩 <a href="#" target="_blank">Remixicon `2.5.0`</a> [Docs](https://remixicon.com/)
 - 🧩 <a href="#" target="_blank">Tailwindcss `3.3.3`</a> [Tailwindcss] npm install -D tailwindcss postcss autoprefixer
