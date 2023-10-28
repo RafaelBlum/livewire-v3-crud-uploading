@@ -38,9 +38,9 @@ com partials, layouts e `skeletons de loadings`.
 - 🧩 <a href="#" target="_blank">Livewire `3.0`</a> [Livewire] composer require livewire/livewire
 - 🧩 <a href="#" target="_blank">laravel debugbar `3.8`</a> [Debugbar] composer require barryvdh/laravel-debugbar --dev
 - 🧩 <a href="#" target="_blank">Remixicon `2.5.0`</a> [Docs](https://remixicon.com/)
-- 🧩 <a href="#" target="_blank">Tailwindcss `3.3.3`</a> [Tailwindcss] npm install -D tailwindcss postcss autoprefixer
-    - ❄ Configuração do framework esta neste link [Install Tailwind CSS with Laravel](https://tailwindcss.com/docs/guides/laravel)
-- 🧩 <a href="#" target="_blank">Alpine jS `2.8.2`</a> [Docs](https://github.com/alpinejs/alpine/tree/v2.8.2)
+- 🧩 <a href="#" target="_blank">Tailwindcss `3.3.3`</a> [Install](https://tailwindcss.com/docs/guides/laravel) npm install -D tailwindcss postcss autoprefixer
+- 🧩 <a href="#" target="_blank">Flowbite `1.8.1`</a> [cdn Install](https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css)
+- 🧩 <a href="#" target="_blank">ChartJS `4.4.0`</a> [cdn Install](https://cdn.jsdelivr.net/npm/chart.js)
 
 ## Desenvolvimento (backend lógica e comandos)
 - `php artisan serve --port=8000` [inicializando servidor] 
