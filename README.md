@@ -32,7 +32,7 @@ com partials, layouts e `skeletons de loadings`.
 
 <p align="center">
 	<a href="#"  target="_blank" title="calculadora com livewire">
-		<img src="gifs/gif-crud-livewire3.gif" alt="Livewire 3.0 - CRUD and uploading image" style="border-radius: 5px;" width="400">
+		<img src="gifs/gif-crud-livewire3.gif" alt="Livewire 3.0 - CRUD and uploading image" style="border-radius: 5px;" width="600">
 	</a>
 </p>
 
