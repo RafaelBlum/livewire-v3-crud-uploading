@@ -54,6 +54,30 @@ com partials, layouts e `skeletons de loadings`.
 - `php artisan livewire:make raffle.sortition ` [Component's raffle Sortition] 
 - `php artisan livewire:make adm.painel-button ` [Component's adm Painel-button] 
 
+## Descritivo dos modulos `components` e front-end
+
+- :zap: Foi criada todas migrates, factories e seeders para popular o banco de dados.
+- :zap: Criado um CRUD completo de produtos e upload de images de cada produto registrado, juntamente com as devidas validações de imagens, propriedades e front-end.
+- :zap: Estudantes seguiu o mesmo desenvolvimento de CRUD e upload de produto.
+- :zap: Foi personalizado a paginação de todos componentes.
+- :zap: Foi criado um componente ADM para ser responsável pelos botões rapidos do painel ADM.
+- :zap: Criado a listagem simples de usuários e formulário de criação de usuários.
+- :zap: O frontend foi todo personalizado apartir de um `template ADM` usando o `Tailwind e Flowbite`.
+- :zap: Criado uma página de sorteio aleatório de estudantes importando a biblioteca `JSConfetti`.
+
+~~~~~~
+    import JSConfetti from 'js-confetti'
+    
+    const jsConfetti = new JSConfetti();
+    
+    window.confetti = ()=> jsConfetti.addConfetti(
+        {
+            emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸', '👾', '🌞', '💯'],
+        }
+    );
+~~~~~~
+
+> Abaixo coloquei alguns exemplos simplificados sobre o projeto.
 
 ## :label: Exemplo de algumas `atividades` no desenvolvimento.
 
