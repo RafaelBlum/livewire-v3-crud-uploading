@@ -57,17 +57,7 @@ com partials, layouts e `skeletons de loadings`.
 
 ## :label: Exemplo de algumas `atividades` no desenvolvimento.
 
-- Introduction
-- install and setup Laravel/Livewire and Breeze
-- Setup Models/Migrations/Factories/Seeders
-- Work On Index/Create page UI
-- Display Students Data and Implement Pagination
-- Implement Hot Reloads for Livewire Components
-- Work On the Create Form
-- Implement Validations
-- Implement Image Upload
-
-- Implement Dependent Dropdown [Documentação](https://livewire.laravel.com/docs/lifecycle-hooks#update)
+- :ok_hand: Implement Dependent Dropdown [Documentação](https://livewire.laravel.com/docs/lifecycle-hooks#update)
     - updating é renderizado com todas propriedade que após forem atualizadas/selecionada, mas Updated atualização da `propriedade especifica`, no caso a `class_id`
 ~~~~~~method updated
 
@@ -82,7 +72,7 @@ com partials, layouts e `skeletons de loadings`.
     }
 ~~~~~~
 
-- Na view
+> Na view
 ~~~~~~foreach sections
     <select wire:model="section_id" id="section_id"">
         <option value="">Selecione a turma</option>
@@ -95,7 +85,7 @@ com partials, layouts e `skeletons de loadings`.
 
 ~~~~~~
 
--  `STORAGE::` Exemplos com a classe Storage
+- :ok_hand: `STORAGE::` Exemplos com a classe Storage
 ~~~~~~
 if(storage_path('app/public/'.$this->student->image)){
                  1.create a new folder
@@ -147,17 +137,13 @@ if(storage_path('app/public/'.$this->student->image)){
             }
 ~~~~~~
 
-- DATA BIND
+- :ok_hand: DATA BIND
 > Passando ID student via rota controller laravel. Poderiamos passar direto pelo component, direto na view sem layout
 ~~~~~~
     <livewire:student.edit :key='$student'/>
 ~~~~~~
 
-
-
-## Dicas e exemplos básicos
-
-- Como criar uma TAG com um valor inicial
+- :ok_hand: Como criar uma TAG com um valor inicial
 > Na propria chamada do componente criamos um propriedade e definimos seu valor e na view a TAG já terá seu valor.
 
 ~~~~~~
@@ -168,7 +154,7 @@ if(storage_path('app/public/'.$this->student->image)){
 ~~~~~~
 
 
-- Como passar um valor de uma variável para view de um componente
+- :ok_hand: Como passar um valor de uma variável para view de um componente
 > Exemplo criando uma variável, mas poderia receber de uma variável de um component.
 
 ~~~~~~
@@ -188,7 +174,7 @@ if(storage_path('app/public/'.$this->student->image)){
     }
 ~~~~~~
 
-- Actions
+- :ok_hand: Actions
 > Ações de botões e formulários que reagem com click de botão, form's chamado algum metodo.
 ~~~~~~
     <form wire:submit="save"> ... </form>
@@ -196,14 +182,14 @@ if(storage_path('app/public/'.$this->student->image)){
 ~~~~~~
 
 
-- Atualizar algum component modificado
+- :ok_hand: Atualizar algum component modificado
 > Exemplo que atualiza a tabela de usuários. Basta incluir na `div` do componente para o _liveiwre_ fazer a **poll** - `wire:poll.visible`
 
 ~~~~~~
     <table class="w-full whitespace-no-wrap" wire:poll.visible> ... </table>
 ~~~~~~
  
-- Data Binding
+- :ok_hand: Data Binding
 > É a forma que vamos interagir e definir valores as propriedades do nosso componente livewire. `wire:model="propertyName"` ou
 > na nova versão 3.0 `wire:model.live="propertyName"`.
 
@@ -227,7 +213,7 @@ if(storage_path('app/public/'.$this->student->image)){
     }
 ~~~~~~
 
-- Validation
+- :ok_hand: Validation
 > Na versão 2.0 do livewire seria assim a validação no metodo save.
 
 ~~~~~~
@@ -267,7 +253,7 @@ public function save(){
 
 
 
-- Flash Messages
+- :ok_hand: Flash Messages
 > Passando messagem de retorno para front-end. Utilizando o `helper` `request() e session()` com flush que passamos `2 argumentos`.
 > E também podemos **_redirecionar_ para outra rota**, juntamente com uma messagem with.
 
@@ -277,7 +263,7 @@ public function save(){
 ~~~~~~
 
 
-- Paginação
+- :ok_hand: Paginação
 > A paginação é bem parecida com a do laravel, só precisamos chamar na classe o `WithPagination`.
 
 ~~~~~~
@@ -299,7 +285,7 @@ public function save(){
     </li>
 ~~~~~~
 
-- Loading files|states [Documents loading](https://livewire.laravel.com/docs/uploads)
+- :ok_hand: Loading files|states [Documents loading](https://livewire.laravel.com/docs/uploads)
 > Para trabalhar com loading de arquivos, primeiro add na classe `WithFileUploads` e com metodo de armazenar os arquivos `store`.
 
 ~~~~~~Class component
@@ -363,7 +349,7 @@ public function save(){
 ~~~~~~
 
 
-- Eventos [Documents events](https://livewire.laravel.com/docs/events)
+- :ok_hand: Eventos [Documents events](https://livewire.laravel.com/docs/events)
 > O metodo `dispatch()` é responsável por fazer a comunicação entre as classes doscomponentes e fazer a atualização `update`.
 > O processo é realizado chamando o `dispatch` gerando um nome e passar dados adicionais com o evento passando os dados como segundo parâmetro
 
@@ -379,7 +365,7 @@ public function save(){
     public function updateList($user = null){ //.. }
 ~~~~~~
 
-- Polling [Documents Polling](https://livewire.laravel.com/docs/wire-poll)
+- :ok_hand: Polling [Documents Polling](https://livewire.laravel.com/docs/wire-poll)
 > Uma alternativa para não criar este evento é trabalhar com `wire:poll`
 > Desta forma, qualquer atualização no componente será feito o refresh | `<div wire:poll.visible> ... </div>`.
 
@@ -391,7 +377,7 @@ public function save(){
     </table>
 ~~~~~~
 
-- Lazy Loading [Documents Loading](https://livewire.laravel.com/docs/lazy) e animação de Loading Skeletons [Skeletons](https://delba.dev/blog/animated-loading-skeletons-with-tailwind)
+- :ok_hand: Lazy Loading [Documents Loading](https://livewire.laravel.com/docs/lazy) e animação de Loading Skeletons [Skeletons](https://delba.dev/blog/animated-loading-skeletons-with-tailwind)
 > O componente esqueleto pode ser usado como um indicador de `carregamento alternativo` ao controle giratório, `imitando` o conteúdo que será carregado.
 
 ~~~~~~
@@ -417,7 +403,7 @@ public function save(){
     <livewire:adm.painel-button lazy/>
 ~~~~~~
 
-- Propriedades Computadas [Property computer](https://livewire.laravel.com/docs/computed-properties)
+- :ok_hand: Propriedades Computadas [Property computer](https://livewire.laravel.com/docs/computed-properties)
 > As propriedades computadas permitem acessar valores e armazená-los em cache para acesso futuro durante a solicitação
 
 ~~~~~~Class
@@ -436,7 +422,7 @@ public function save(){
     @endforeach
 ~~~~~~
 
-- Criar Layout  [Layout](https://livewire.laravel.com/docs/quickstart#create-a-template-layout)
+- :ok_hand: Criar Layout  [Layout](https://livewire.laravel.com/docs/quickstart#create-a-template-layout)
                 - [Tutorial](https://www.youtube.com/watch?v=SKxIXm-MOE4&list=PLqDySLfPKRn543NM_fTrJRdhjBgsogzSC&index=16&ab_channel=YeloCode)
 > o Livewire procurará automaticamente um arquivo de layout.
 
@@ -459,7 +445,7 @@ public function save(){
     </html>
 ~~~~~~
 
-- [Form Objects | ](https://livewire.laravel.com/docs/forms) 
+- :ok_hand: [Form Objects | ](https://livewire.laravel.com/docs/forms) 
 > Os objetos de formulário permitem reutilizar a lógica do formulário entre os componentes e fornecem uma ótima maneira 
 >de manter a classe do componente mais limpa, agrupando todo o código relacionado ao formulário em uma classe separada.
 
@@ -496,14 +482,14 @@ php artisan livewire:form PostForm
     {{$form->title}}
 ~~~~~~
 
-- [URL Query Parameters | ](https://livewire.laravel.com/docs/url)
+- :ok_hand: [URL Query Parameters | ](https://livewire.laravel.com/docs/url)
 > 
 ~~~~~~
     #[Url(as: 'busca', keep: true, history: true)]
     public $search = '';
 ~~~~~~
 
-- [Offline States | ]()
+- :ok_hand: [Offline States | ]()
 > Para você pode notificar os usuários caso eles estejam offline `wire:offline`.
 
 ~~~~~~
@@ -512,28 +498,15 @@ php artisan livewire:form PostForm
     </div>
 ~~~~~~
 
-- [Multi File Upload | ](https://livewire.laravel.com/docs/uploads#handling-multiple-files)
-- [Livewire | File Upload - Pinguim do Laravel | 50:30](https://www.youtube.com/watch?v=gYs5cwzgAUA&t=3772s&ab_channel=PinguimdoLaravel%C2%B7RafaelLunardelli)
-> multiple arquivo em um registro
-> Precisa criar relação do usuário com imagens
 
-~~~~~~
-
-~~~~~~
-
-- [Wire:navigate | ](https://livewire.laravel.com/docs/wire-navigate)
+- :ok_hand: [Wire:navigate | ](https://livewire.laravel.com/docs/wire-navigate)
 > 
 ~~~~~~
 <a href="/" wire:navigate.hover>Dashboard</a>
 ~~~~~~
 
-- [Custom validation attribute name | ]()
-> 
-~~~~~~
 
-~~~~~~
-
-- [Lifecycle hooks | ](https://livewire.laravel.com/docs/lifecycle-hooks)
+- :ok_hand: [Lifecycle hooks | ](https://livewire.laravel.com/docs/lifecycle-hooks)
 > Ciclo de vida dos hooks que permitem executar código em pontos específicos durante o ciclo de vida de um componente.
 
 | Hook Method   | Explicação    |
@@ -548,7 +521,7 @@ php artisan livewire:form PostForm
 | `dehydrate()` | _Chamado no final de cada solicitação de componente._|
 
 
-- [Keyboard Shortcuts | ](https://livewire.laravel.com/docs/actions#listening-for-specific-keys)
+- :ok_hand: [Keyboard Shortcuts | ](https://livewire.laravel.com/docs/actions#listening-for-specific-keys)
 > Os keywords são eventos de ações para o usuário.
 ~~~~~~
 <form wire:submit.prevent="save" enctype="multipart/form-data" wire:keydown.space.window="save">
@@ -557,7 +530,7 @@ php artisan livewire:form PostForm
 </form>
 ~~~~~~
 
-- [Magic Actions | ](https://livewire.laravel.com/docs/actions#magic-actions)
+- :ok_hand: [Magic Actions | ](https://livewire.laravel.com/docs/actions#magic-actions)
 > Livewire fornece um conjunto de ações "mágicas" que permitem executar tarefas comuns em seus componentes sem definir métodos personalizados.
 ~~~~~~
     //$parent
@@ -578,13 +551,6 @@ php artisan livewire:form PostForm
 
 
 
-
-## Dicas laravel Backpack annotatio
-Return ids:
-~~~~~~
-$ids = User::all()->pluck('id');
-$ids = User::all()->modelKeys();
-~~~~~~
 
 
 ## Contatos
