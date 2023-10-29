@@ -50,36 +50,12 @@ com partials, layouts e `skeletons de loadings`.
 - `php artisan livewire:make student.edit `
 - `php artisan livewire:make student.index `
 - `php artisan livewire:make users.create ` [Component's users Users] 
-- `php artisan livewire:make users.edit `
 - `php artisan livewire:make users.index `
 - `php artisan livewire:make raffle.sortition ` [Component's raffle Sortition] 
 - `php artisan livewire:make adm.painel-button ` [Component's adm Painel-button] 
 
 
-## Desenvolvimento (Frontend layout e lógica)
-
-
-| Classe | Explicação table |
-| :---         |     :---      |
-| `validate(['title' => ['required', 'min:3']]` | * Validação de criação e mensagens personalizadas de cada tipo* |
-| `$this->emitTo` | *EmitTo é uma função que avisa um componente de alguma atividade realizada e apartir disso podemos por exemplo, realizar `refresh`* |
-
-
-
-## Description title
- 
-- Session
-    - `comandos...` [descriptons] | _descriptons..._.
-
-
-- Session
-    - subsession
-~~~~~~description
-    Code description
-~~~~~~
-
-
-## :label: Exemplo `Atividades de aluno`
+## :label: Exemplo de algumas `atividades` no desenvolvimento.
 
 - Introduction
 - install and setup Laravel/Livewire and Breeze
