@@ -42,15 +42,20 @@ com partials, layouts e `skeletons de loadings`.
 - 🧩 <a href="#" target="_blank">Flowbite `1.8.1`</a> [cdn Install](https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css)
 - 🧩 <a href="#" target="_blank">ChartJS `4.4.0`</a> [cdn Install](https://cdn.jsdelivr.net/npm/chart.js)
 
-## Desenvolvimento (backend lógica e comandos)
-- `php artisan serve --port=8000` [inicializando servidor] 
-- `php artisan livewire:make todo ` [Criando componente todo] 
-- `php artisan make:model Todo -m ` [Criado a tabela modelo para add propriedades] 
+## :construction: Desenvolvimento das camadas de componentes
+- `php artisan livewire:make gallery.create ` [Component's gallery Product] 
+- `php artisan livewire:make gallery.edit `
+- `php artisan livewire:make gallery.index `
+- `php artisan livewire:make student.create ` [Component's student Student] 
+- `php artisan livewire:make student.edit `
+- `php artisan livewire:make student.index `
+- `php artisan livewire:make users.create ` [Component's users Users] 
+- `php artisan livewire:make users.edit `
+- `php artisan livewire:make users.index `
+- `php artisan livewire:make raffle.sortition ` [Component's raffle Sortition] 
+- `php artisan livewire:make adm.painel-button ` [Component's adm Painel-button] 
 
 
-## Pacotes auxiliares
-- `composer require "spatie/laravel-medialibrary` [oferece componentes Blade, Vue e React para lidar com uploads para a biblioteca de mídia e administrar o conteúdo de uma coleção da biblioteca de mídia.] 
-    
 ## Desenvolvimento (Frontend layout e lógica)
 
 
@@ -74,25 +79,7 @@ com partials, layouts e `skeletons de loadings`.
 ~~~~~~
 
 
-## Lista de comandos
-- `composer create-project laravel/laravel product-gallery` [Criação do projeto] 
-- `composer require laravel/breeze --dev` [laravel Breeze] 
-- `php artisan breeze:install --dark` [Breeze dark mod] 
-- `php artisan migrate` [inicializando tabelas e banco mysql]
-- `php artisan serve` [inicializando servidor]
-- `git init` []
-- `git add .` []
-- `git commit -m ":tada: first commit` []
-- `git branch -M main` []
-- `git remote add origin https://github.com/RafaelBlum/products-gallery.git` []
-- `git push -u origin main` []
-- `composer require livewire/livewire` []
-- `php artisan make:livewire gallery.create --test` []
-- `composer require spatie/ray --dev` []
-- `` []
-- `` []
-
-## Exemplo `Atividades de aluno`
+## :label: Exemplo `Atividades de aluno`
 
 - Introduction
 - install and setup Laravel/Livewire and Breeze
