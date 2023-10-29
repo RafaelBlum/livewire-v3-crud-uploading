@@ -30,6 +30,11 @@ Demonstrar o poder do `livewire` na `versão 3.0` com a criação de `CRUD` de `
 E inclui um `sorteio ramdomico` de estudantes, `graficos com chartJS`, e `adaptação de layout administrativo` para o projeto trabalhando as views 
 com partials, layouts e `skeletons de loadings`.
 
+<p align="center">
+	<a href="#"  target="_blank" title="calculadora com livewire">
+		<img src="gifs/gif-crud-livewire3.gif" alt="Livewire 3.0 - CRUD and uploading image" style="border-radius: 5px;" width="400">
+	</a>
+</p>
 
 ###  Tecnologias (serviços externos, libs, frameworks, hospedagem etc.) e instalações.
 
